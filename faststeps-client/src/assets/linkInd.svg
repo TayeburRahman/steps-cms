@@ -1,0 +1,6 @@
+<svg id="Social_Button" data-name="Social Button" xmlns="http://www.w3.org/2000/svg" width="33.018" height="33.018" viewBox="0 0 33.018 33.018">
+  <g id="Twitter" transform="translate(0 0)">
+    <circle id="Placeholder" cx="16.509" cy="16.509" r="16.509" fill="#fff"/>
+    <path id="Icon_awesome-linkedin-in" data-name="Icon awesome-linkedin-in" d="M2.386,10.66H.176V3.543h2.21ZM1.28,2.573A1.286,1.286,0,1,1,2.56,1.281,1.291,1.291,0,0,1,1.28,2.573Zm9.378,8.088H8.452V7.2c0-.826-.017-1.884-1.149-1.884-1.149,0-1.325.9-1.325,1.825V10.66H3.77V3.543H5.89v.971h.031A2.322,2.322,0,0,1,8.012,3.365c2.237,0,2.648,1.473,2.648,3.386V10.66Z" transform="translate(11.556 10.73)" fill="#3c6467"/>
+  </g>
+</svg>

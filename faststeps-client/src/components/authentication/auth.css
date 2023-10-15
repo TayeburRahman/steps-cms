@@ -1,0 +1,30 @@
+.OnPassword {
+  color: #4d506c;
+}
+.account-pages {
+  background-color: #0b3d41;
+  height: 100vh;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.auth-col {
+  background-color: #6d6d6d67;
+  border-color: rgba(10, 83, 83, 0.274);
+}
+
+.input-bg {
+  background-color: none !important;
+}
+.text-muteds {
+  color: rgb(190, 190, 190);
+}
+.btn-auth {
+  width: 120px !important;
+  border: none;
+  height: 35px;
+  border-radius: 5px;
+  color: white;
+  background-image: radial-gradient(90% 100% at 90% 0, #9ff2d4 0, #3c6467 80%);
+}

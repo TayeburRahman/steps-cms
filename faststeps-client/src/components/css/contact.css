@@ -1,0 +1,113 @@
+.contact-banner {
+  background-image: url("../../assets/contact-cover.png");
+  height: 344.87px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  width: 100%;
+}
+
+.background-overlay-contact {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #00ffaa4b 0%, #0b3d41d3 100%);
+}
+.align_content {
+  align-content: center;
+}
+
+.content-end {
+  justify-content: end;
+}
+.mx-w395 {
+  max-width: 349.78px;
+  color: rgb(27, 27, 27) !important;
+}
+.d-flex-contact-add {
+  display: flex !important;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.contact-add {
+  color: #0b3d41 !important;
+}
+.w-100 {
+  width: 100%;
+}
+.icon-contact-img {
+  margin-top: 50px;
+  margin-left: 15px;
+}
+
+.icon-contact-img a {
+  margin-right: 10px;
+}
+
+.icon-contact-img img {
+  width: 45px;
+}
+.contact-left-m {
+  margin-left: -4px;
+}
+.icon-youtub-div {
+  border: 2px solid rgba(11, 61, 65, 0.89);
+  border-radius: 50px;
+  padding: 5px;
+  height: 45px;
+  width: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-youtub {
+  font-size: 21px !important;
+  color: rgba(11, 61, 65, 0.795) !important;
+}
+@media only screen and (max-width: 913px) {
+  .icon-contact-img img {
+    width: 38px;
+  }
+  .svg-contact {
+    font-size: 38px !important;
+  }
+
+  .icon-contact-img {
+    margin-top: 40px;
+  }
+
+  .icon-youtub-div {
+    height: 40px;
+    width: 40px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .icon-contact-img img {
+    width: 30px;
+  }
+
+  .svg-contact {
+    font-size: 30px !important;
+  }
+  .icon-contact-img {
+    margin-top: 30px;
+  }
+
+  .contact-banner {
+    background-image: url("../../assets/mobile-banner-contact.png");
+    background-position: left;
+    height: 280.87px;
+  }
+  .icon-youtub-div {
+    height: 30px;
+    width: 30px;
+  }
+  .icon-youtub {
+    font-size: 12px !important;
+  }
+}

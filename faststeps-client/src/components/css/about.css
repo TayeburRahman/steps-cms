@@ -1,0 +1,180 @@
+.about-bg {
+  background-image: url("../../assets/bacout-banner.png");
+  height: 344.87px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  width: 100%;
+}
+
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    #09b87e44 0%,
+    rgba(11, 79, 58, 0.4009978991596639) 100%
+  );
+}
+
+.banner-about {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  height: 100%;
+  font-size: 60px;
+}
+.banner-about h2 {
+  font-size: 60px;
+  font-weight: 400;
+  margin-top: 40px;
+  z-index: 1;
+}
+
+.business_img {
+  width: 80%;
+}
+.story-bg {
+  background-color: #0b3d41 !important;
+  position: relative;
+}
+
+.Path-about {
+  position: relative;
+  padding: 20px;
+  width: 70%;
+}
+.Path-about2 {
+  position: relative;
+  padding: 20px;
+  width: 70%;
+  transition: 0.5s;
+}
+.Path4843-about {
+  position: absolute;
+  top: 60px;
+  right: 0 !important;
+  width: 140px !important;
+  transition: 0.5s;
+}
+.Path4843o-about {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 90px !important;
+  transition: 0.5s;
+}
+
+.story-bg:hover .Path4843o-about {
+  width: 110px !important;
+}
+.story-bg:hover .Path4843-about {
+  width: 160px !important;
+}
+.item-center {
+  justify-items: center;
+}
+.d-grid-c {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+.padding-right-about {
+  padding-right: 130px !important;
+}
+.about-cover {
+  position: absolute;
+  width: 100%;
+  bottom: 60px;
+  left: 0;
+  height: 300px;
+  /* z-index: 10; */
+}
+
+.Path-about2:hover {
+  margin-right: -15px;
+}
+.MISSION-lg-text {
+  font-size: 40px;
+  color: #0b3d41;
+}
+.MISSION-p {
+  color: #0b3d41;
+}
+.Path-about3 {
+  width: 70%;
+}
+.about-last-bg {
+  background-image: url("../../assets/about_bg_home.png");
+  min-height: 547px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+.about_logo30 {
+  width: 225px;
+}
+.none-about-bg {
+  background-color: #0b3d41 !important;
+  height: 20px;
+}
+.mx-80 {
+  width: 80%;
+}
+@media only screen and (max-width: 913px) {
+  .Path-about {
+    width: 100% !important;
+  }
+  .Path-about2 {
+    width: 100% !important;
+  }
+
+  .Path-about3 {
+    width: 100% !important;
+  }
+  .about-cover {
+    bottom: 35px;
+  }
+  .mx-80 {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .about-bg {
+    height: 280.87px;
+  }
+
+  .banner-about h2 {
+    font-size: 40px;
+  }
+
+  .Path4843-about {
+    top: 10px;
+  }
+  .padding-right-about {
+    padding: 0px !important;
+  }
+
+  .about-cover {
+    bottom: -70px;
+    /* z-index: 10; */
+  }
+  .about_logo30 {
+    width: 50%;
+  }
+  .mx-80 {
+    width: 100%;
+  }
+}

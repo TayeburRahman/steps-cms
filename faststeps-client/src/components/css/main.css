@@ -1,0 +1,134 @@
+.router_link {
+  text-decoration: none !important;
+  color: rgba(0, 0, 0, 0.829);
+}
+
+.routing_button:hover {
+  text-decoration: none !important;
+  color: rgba(0, 0, 0, 0.829);
+  background: linear-gradient(40deg, #99ffcc, #10694b) !important;
+}
+
+.routing_button svg {
+  color: white !important;
+}
+
+.font500 {
+  font-weight: 600 !important;
+}
+.Typo5Bold {
+  font-weight: 700;
+  font-family: system-ui;
+}
+
+.div-title {
+  font-size: 19px !important;
+  font-weight: 600 !important;
+  font-family: system-ui;
+  color: rgba(31, 31, 31, 0.952);
+}
+.text-left {
+  text-align: left !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+.text-right {
+  text-align: right !important;
+}
+
+.d-flex {
+  display: flex !important;
+  align-items: center;
+}
+
+.jc-sb {
+  justify-content: space-between !important;
+}
+.subtitle2lg {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: rgb(54, 54, 54) !important;
+}
+
+.text-14 {
+  font-size: 14px !important;
+  margin-right: 5px;
+}
+
+.margin {
+  margin-bottom: -5px !important;
+}
+
+/* Nav Css */
+.navbar {
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  padding: 15px;
+}
+.avatar {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.nav-dashboard {
+  backdrop-filter: blur(10px) !important;
+  background-color: #0930338e;
+}
+#background {
+  background: linear-gradient(40deg, #99ffcc, #10694b) !important;
+}
+.color-home2 {
+  color: #99ffcc;
+}
+
+/* ------  */
+.div-shadow {
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px !important;
+  height: 100%;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* --------------dashboard home */
+.button-handle {
+  border: 1px solid rgba(0, 0, 0, 0.521);
+  width: 100px;
+  height: 35px;
+  border-radius: 3px;
+}
+.button-handle-add {
+  border: 1px solid rgba(0, 0, 0, 0.521);
+  width: 150px;
+  height: 35px;
+  border-radius: 3px;
+  margin: 10px;
+}
+.border-settings {
+  border-top: 1px solid rgba(0, 0, 0, 0.151) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.192) !important;
+  width: 100% !important;
+  background: rgba(46, 46, 46, 0.048);
+}
+
+.object-settings {
+  border-top: 1px solid rgba(0, 0, 0, 0.151) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.192) !important;
+  width: 100% !important;
+}
+/* ----------------- */
+.nested-routing-db {
+  display: flex;
+  background: rgba(0, 0, 0, 0.027);
+}
+.routing_d {
+  height: 50px;
+  background-color: rgba(10, 44, 24, 0.171);
+  margin: 0px 10px 0px 10px;
+}
+
+.quill_size {
+  height: 100px !important;
+}
