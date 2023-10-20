@@ -1,7 +1,6 @@
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRight from "@mui/icons-material/ChevronRight";
-import DashboardIcon from '@mui/icons-material/Dashboard';
 import HomeIcon from "@mui/icons-material/Home";
 import LeaderboardIcon from "@mui/icons-material/Leaderboard";
 import LogoutIcon from "@mui/icons-material/Logout";
@@ -17,7 +16,7 @@ import Toolbar from "@mui/material/Toolbar";
 import { styled } from "@mui/material/styles";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { userLoggedOut } from "../../features/auth/authSlice";
 const drawerWidth = 240;
 
@@ -51,6 +50,7 @@ const SideBar = () => {
   const [open, setOpen] = React.useState(false);
   const { pathname } = useLocation();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const toggleDrawer = () => {
     setOpen(!open);
@@ -85,11 +85,18 @@ const SideBar = () => {
       icon: <LeaderboardIcon sx={{ color: "#e3e3e3" }} />,
       to: "/dashboard/services",
     }, 
+    {
+      name: "Services Package ",
+      icon: <LeaderboardIcon sx={{ color: "#e3e3e3" }} />,
+      to: "/dashboard/package",
+    },  
+     
   ];
 
   const logout = () => {
     dispatch(userLoggedOut());
     localStorage.clear();
+    navigate("/home")
   };
 
   return (
@@ -106,29 +113,13 @@ const SideBar = () => {
           {open ? <ChevronLeftIcon /> : <ChevronRight />}
         </IconButton>
       </Toolbar>
-      <Divider />
+      <Divider /> 
 
         <List component="nav">
          <Link className="router_link " to="/dashboard"  >
             <ListItemButton
-              className="routing_button mt-3"
-              id={`${pathname === "dashboard" && "background"}`}
-            >
-              <ListItemIcon><DashboardIcon/></ListItemIcon>
-              <ListItemText
-                className="font500"
-                primary="Dashboard"
-                sx={{ color: "#e3e3e3" }}
-              />
-            </ListItemButton>
-          </Link>
-        </List>
-
-        <List component="nav">
-         <Link className="router_link " to="/dashboard/profile"  >
-            <ListItemButton
               className="routing_button mb-1"
-              id={`${pathname === "/dashboard/profile" && "background"}`}
+              id={`${pathname ===  "/dashboard" ? "background":""}`}
             >
               <ListItemIcon><AccountCircleIcon/></ListItemIcon>
               <ListItemText

@@ -3,9 +3,12 @@ import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import close from '../../../assets/close.svg';
 import okaygr from '../../../assets/okay-gr.svg';
 import okay from '../../../assets/okay.svg';
+import { useGetMeetingPackageQuery } from '../../../features/auth/authApi';
+import { useLanguesContext } from '../../../hooks/LanguesContext';
 
 export default function MeetingRoom({setValueOpen,openValue}) {
 
@@ -13,8 +16,9 @@ export default function MeetingRoom({setValueOpen,openValue}) {
     left: false
   });
 
- 
-  console.log('openValue', openValue)
+  const { languesState } = useLanguesContext(); 
+  useGetMeetingPackageQuery()
+  const {  meeting_office } = useSelector((state) => state.auth);
 
   useEffect(() => {
    
@@ -46,193 +50,41 @@ export default function MeetingRoom({setValueOpen,openValue}) {
               <Header/>
               <Container className=''>
                 <div className='text-center text-white d-grid-c mb-5'>
-                  <p className='w-70'>"A spacious area that gives entrepreneurs and freelancers the opportunity to choose a vacant space and work together in one environment that brings together several offices.</p>
-                  <p className='w-70'>The common space provides the means and different special services to help working groups achieve their tasks."</p>
+                  <p className='w-70'>{languesState === "arb" ? "عبارة عن مساحة واسعة تتيح لرواد الأعمال وممارسي الأعمال الحرة فرصة اختيار مساحة شاغرة والعمل في بيئة واحدة تجمع عدة مكاتب معاً":"A spacious area that gives entrepreneurs and freelancers the opportunity to choose a vacant space and work together in one environment that brings together several offices."}</p>
+                  <p className='w-70'>{languesState === "arb" ? "توفر المساحة المشتركة خدمات مختلفة ومتميزة وتقدم الوسائل التي تساعد مجموعات العمل على تحقيق مشروعاتهم": "The common space provides the means and different special services to help working groups achieve their tasks."}</p>
                 </div>
-                <div className='mb-4'> 
-                <div className='row align-center'>
-                  <div className='col-sm-12 col-md-4 col-lg-4 content-center'>
-                    <div className='box-model-pkg p-4 text-center pt-5'>
-                      <p className='text-white'>1 Hour Meeting</p>
-                      <h2 className='Crafting-lg-text'>119 SAR</h2>
+                {
+                  meeting_office && meeting_office?.map((data, idx)=>(
+                    <div className='mb-4'> 
+                    <div className='row align-center'>
+                      <div className='col-sm-12 col-md-4 col-lg-4 content-center'>
+                      <div
+                            className='box-model-pkg p-4 text-center pt-5 lg-text-color'
+                            dangerouslySetInnerHTML={{
+                                __html: data?.package
+                            }}>
+                        </div> 
+                      </div>
+                      <div className='col-sm-12 col-md-8 col-lg-8'>
+                         {
+                          data?.offer&& data?.offer.map((pkg, idx)=>(
+                            <>
+                            <div className={`${idx % 2 === 0 ?"service-pkg bg-home":"service-pkg bg-white" }`}>
+                             <img src={`${idx % 2 === 0 ?okay: okaygr }` } className='me-2'/> 
+                                {languesState === "arb" ? pkg?.arb : pkg?.eng}
+                            </div>
+                      
+                            </>
+                          ))
+                         }
+                      </div>
+    
                     </div>
-                  </div>
-                  <div className='col-sm-12 col-md-8 col-lg-8'>
-                    <div className='service-pkg bg-white'>
-                    <img src={okaygr} className='me-2'/>
-                    High-Speed Internet-WIFI
                     </div>
-                    <div className='service-pkg bg-home'>
-                    <img src={okay} className='me-2'/>
-                    Projector-Dissplay Screen
-                    </div>
-                    <div className='service-pkg bg-white'>
-                    <img src={okaygr} className='me-2'/>
-                    White Board
-                    </div> 
-                  </div>
-
-                </div>
-                </div>
-                <div className='mb-4'> 
-                <div className='row align-center'>
-                  <div className='col-sm-12 col-md-4 col-lg-4 content-center' >
-                    <div className='box-model-pkg p-4 text-center pt-5'>
-                      <p className='text-white'>4 Hour Meeting</p>
-                      <h2 className='Crafting-lg-text'>149 SAR</h2> 
-                    </div>
-                  </div>
-                  <div className='col-sm-12 col-md-8 col-lg-8'>
-                    <div className='service-pkg bg-white'>
-                    <img src={okaygr} className='me-2'/>
-                    High-Speed Internet-WIFI
-                    </div>
-                    <div className='service-pkg bg-home'>
-                    <img src={okay} className='me-2'/>
-                    Projector-Dissplay Screen
-                    </div>
-                    <div className='service-pkg bg-white'>
-                    <img src={okaygr} className='me-2'/>
-                    White Board
-                    </div>
-                    <div className='service-pkg bg-home'>
-                    <img src={okay} className='me-2'/>
-                    Hospitality
-                    </div>
-                    <div className='service-pkg bg-white'>
-                    <img src={okaygr} className='me-2'/>
-                    1St Step Lounge-Discount Rate
-                    </div> 
-                  </div>
-
-                </div>
-                </div>
-              <div className='mb-4'> 
-                <div className='row align-center'>
-                  <div className='col-sm-12 col-md-4 col-lg-4 content-center'>
-                    <div className='box-model-pkg p-4 text-center pt-5'>
-                      <p className='text-white'>8 Hour Meeting (Full Day)</p>
-                      <h2 className='Crafting-lg-text'>600 SAR</h2> 
-                    </div>
-                  </div>
-                  <div className='col-sm-12 col-md-8 col-lg-8'>
-                    <div className='service-pkg bg-white'>
-                    <img src={okaygr} className='me-2'/>
-                    High-Speed Internet-WIFI
-                    </div>
-                    <div className='service-pkg bg-home'>
-                    <img src={okay} className='me-2'/>
-                    Projector-Dissplay Screen
-                    </div>
-                    <div className='service-pkg bg-white'>
-                    <img src={okaygr} className='me-2'/>
-                    White Board
-                    </div>
-                    <div className='service-pkg bg-home'>
-                    <img src={okay} className='me-2'/>
-                    Hospitality
-                    </div> 
-                    <div className='service-pkg bg-white'>
-                    <img src={okaygr} className='me-2'/>
-                    1St Step Lounge-Discount Rate
-                    </div> 
-                  </div>
-
-                </div>
-                </div>
-                <div className='mb-4'> 
-                <div className='row align-center'>
-                  <div className='col-sm-12 col-md-4 col-lg-4 content-center'>
-                    <div className='box-model-pkg p-4 text-center pt-5'>
-                      <p className='text-white'>1 Hour Meeting</p>
-                      <h2 className='Crafting-lg-text'>189 SAR</h2> 
-                    </div>
-                  </div>
-                  <div className='col-sm-12 col-md-8 col-lg-8'>
-                    <div className='service-pkg bg-white'>
-                    <img src={okaygr} className='me-2'/>
-                    High-Speed Internet-WIFI
-                    </div>
-                    <div className='service-pkg bg-home'>
-                    <img src={okay} className='me-2'/>
-                    Projector-Dissplay Screen
-                    </div>
-                    <div className='service-pkg bg-white'>
-                    <img src={okaygr} className='me-2'/>
-                    White Board
-                    </div>   
-                  </div>
-
-                </div>
-                </div>
-
-                <div className='mb-4'> 
-                <div className='row align-center'>
-                  <div className='col-sm-12 col-md-4 col-lg-4 content-center'>
-                    <div className='box-model-pkg p-4 text-center pt-5'>
-                      <p className='text-white'>4 Hour Meeting</p>
-                      <h2 className='Crafting-lg-text'>209 SAR</h2> 
-                    </div>
-                  </div>
-                  <div className='col-sm-12 col-md-8 col-lg-8'>
-                    <div className='service-pkg bg-white'>
-                    <img src={okaygr} className='me-2'/>
-                    High-Speed Internet-WIFI
-                    </div>
-                    <div className='service-pkg bg-home'>
-                    <img src={okay} className='me-2'/>
-                    Projector-Dissplay Screen
-                    </div>
-                    <div className='service-pkg bg-white'>
-                    <img src={okaygr} className='me-2'/>
-                    White Board
-                    </div>
-                    <div className='service-pkg bg-home'>
-                    <img src={okay} className='me-2'/>
-                    Hospitality
-                    </div>
-                    <div className='service-pkg bg-white'>
-                    <img src={okaygr} className='me-2'/>
-                    1St Step Lounge-Discount Rate
-                    </div> 
-                  </div>
-
-                </div>
-                </div>
-
-                <div className='mb-4'> 
-                <div className='row align-center'>
-                  <div className='col-sm-12 col-md-4 col-lg-4 content-center'>
-                    <div className='box-model-pkg p-4 text-center pt-5'>
-                      <p className='text-white'>8 Hour Meeting (Full Day)</p>
-                      <h2 className='Crafting-lg-text'>988 SAR</h2> 
-                    </div>
-                  </div>
-                  <div className='col-sm-12 col-md-8 col-lg-8'>
-                    <div className='service-pkg bg-white'>
-                    <img src={okaygr} className='me-2'/>
-                    High-Speed Internet-WIFI
-                    </div>
-                    <div className='service-pkg bg-home'>
-                    <img src={okay} className='me-2'/>
-                    Projector-Dissplay Screen
-                    </div>
-                    <div className='service-pkg bg-white'>
-                    <img src={okaygr} className='me-2'/>
-                    White Board
-                    </div>   
-                    <div className='service-pkg bg-home'>
-                    <img src={okay} className='me-2'/>
-                    Hospitality
-                    </div>
-                    <div className='service-pkg bg-white'>
-                    <img src={okaygr} className='me-2'/>
-                    1St Step Lounge-Discount Rate
-                    </div>  
-                  </div>
-
-                </div>
-                </div>
+                  ))
+                }
+                
+                
               </Container>
             
           </Drawer>

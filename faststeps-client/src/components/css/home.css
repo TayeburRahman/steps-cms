@@ -25,7 +25,7 @@
 }
 .text-scroll {
   color: #0b3d41;
-  font: Comfortaa !important;
+
   font-weight: bold;
   transition: 0.5s;
   margin: 0px;
@@ -49,12 +49,11 @@
 }
 
 .banner-text h2 {
-  font: Comfortaa !important;
   font-size: 60px;
   color: white;
+  font-weight: 500;
 }
 .banner-text p {
-  font: Comfortaa !important;
   color: white;
 }
 .banner-p {
@@ -123,22 +122,38 @@
 .Crafting-lg-text {
   color: #99ffcc;
   opacity: 1;
-  font: Comfortaa !important;
+
+  font-weight: 600;
+}
+.lg-text-color h2 {
+  color: #99ffcc;
+  opacity: 1;
+}
+
+.lg-text-color h3 {
+  color: #99ffcc;
+  opacity: 1;
+
+  font-size: 16px !important;
+}
+
+.lg-text-color P {
+  color: #99ffcc;
+  opacity: 1;
+
+  color: white;
 }
 .Crafting-p {
-  font: Comfortaa !important;
   color: white;
 }
 
 .rContent h2 {
   color: #99ffcc;
   opacity: 1;
-  font: Comfortaa !important;
-  line-height: 32px;
+  font-weight: 600 !important;
 }
 
 .rContent p {
-  font: Comfortaa !important;
   color: white;
   margin-top: 20px;
 }
@@ -149,14 +164,23 @@
   justify-content: center;
 }
 .text-white-html h2 {
-  line-height: 32px !important;
   color: #99ffcc !important;
+  font-weight: 600 !important;
+}
+.text-white-html-org h2 {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+}
+
+.text-white-html-org p {
+  margin-top: 25px;
+  color: white !important;
 }
 
 .text-home-html h2 {
   color: #99ffcc !important;
-  font-weight: 400;
   letter-spacing: 2px;
+  font-weight: 600 !important;
 }
 
 .text-white-html p {
@@ -165,9 +189,9 @@
 }
 
 .text-black-html h2 {
-  color: #093336;
-  line-height: 32px !important;
+  color: #063235d3;
   font-size: 40px;
+  font-weight: 600 !important;
 }
 
 .object-div {
@@ -290,6 +314,7 @@
 .text-100 h1 {
   font-size: 85px;
   color: #3c6467 !important;
+  font-weight: 700 !important;
 }
 
 .contact-link {
@@ -357,11 +382,15 @@
 }
 .business_right {
   padding-bottom: 17px;
+  transition: 0.5s;
 }
 .business_right p {
   font-size: 14px;
   padding: 0;
   margin: 0;
+}
+.business_right:hover {
+  margin-left: 10px;
 }
 .image-business {
   width: 35px;
@@ -375,6 +404,18 @@
   color: #0b3d41 !important;
 }
 /* ----------- */
+.p_lg_md_100 {
+  padding: 100px;
+  max-width: 720px;
+}
+
+#text-right {
+  text-align: right !important;
+}
+#d-grid-r {
+  display: grid;
+  justify-content: end;
+}
 
 @media only screen and (max-width: 913px) {
   .excellence {
@@ -411,6 +452,10 @@
 
   .jr-p-n {
     margin-left: 0px;
+  }
+
+  .p_lg_md_100 {
+    padding: 25px;
   }
 }
 

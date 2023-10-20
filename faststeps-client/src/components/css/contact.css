@@ -68,6 +68,9 @@
   font-size: 21px !important;
   color: rgba(11, 61, 65, 0.795) !important;
 }
+#contact-form-arb {
+  margin-top: -361px;
+}
 @media only screen and (max-width: 913px) {
   .icon-contact-img img {
     width: 38px;
@@ -83,6 +86,9 @@
   .icon-youtub-div {
     height: 40px;
     width: 40px;
+  }
+  #contact-form-arb {
+    margin-top: -325px !important;
   }
 }
 
@@ -109,5 +115,8 @@
   }
   .icon-youtub {
     font-size: 12px !important;
+  }
+  #contact-form-arb {
+    margin-top: -300px !important;
   }
 }

@@ -3,9 +3,12 @@ import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import close from '../../../assets/close.svg';
 import okaygr from '../../../assets/okay-gr.svg';
 import okay from '../../../assets/okay.svg';
+import { useGetFinancialPackageQuery } from '../../../features/auth/authApi';
+import { useLanguesContext } from '../../../hooks/LanguesContext';
 
 export default function AdvisoryPackages({setValueOpenS,openValueS}) {
 
@@ -13,8 +16,9 @@ export default function AdvisoryPackages({setValueOpenS,openValueS}) {
     left: false
   });
 
- 
-  console.log('openValueS', openValueS)
+  const { languesState } = useLanguesContext(); 
+  useGetFinancialPackageQuery()
+  const { see_financial } = useSelector((state) => state.auth);
 
   useEffect(() => {
    
@@ -44,254 +48,44 @@ export default function AdvisoryPackages({setValueOpenS,openValueS}) {
             anchor={anchor}
             open={state[anchor]} >
               <Header/>
-              <Container className=''>
-                <div className='text-center text-white d-grid-c mb-5'>
-                  <p className='w-70'>"A spacious area that gives entrepreneurs and freelancers the opportunity to choose a vacant space and work together in one environment that brings together several offices.</p>
-                  <p className='w-70'>The common space provides the means and different special services to help working groups achieve their tasks."</p>
+             
+              <div className='text-center text-white d-grid-c mb-5'>
+                  <p className='w-70'>
+                  {languesState === "arb" ? "الإدارة المالية":"Financial Managment"}
+                  </p> 
                 </div>
-                <div className='mb-4'> 
-                <div className='row align-center'>
-                  <div className='col-sm-12 col-md-4 col-lg-4 content-center'>
-                    <div className='box-model-pkg p-4 text-center pt-5'>
-                      <p className='text-white'>Daily - On Spot Payment</p>
-                      <h2 className='Crafting-lg-text'>151 SAR</h2>
+              <Container className=''> 
+                     {
+                  see_financial && see_financial?.map((data, idx)=>(
+                    <div className='mb-4'> 
+                    <div className='row align-center'>
+                      <div className='col-sm-12 col-md-4 col-lg-4 content-center'>
+                      <div
+                            className='box-model-pkg p-4 text-center pt-5 lg-text-color'
+                            dangerouslySetInnerHTML={{
+                                __html: data?.package
+                            }}>
+                        </div> 
+                      </div>
+                      <div className='col-sm-12 col-md-8 col-lg-8'>
+                         {
+                          data?.offer&& data?.offer.map((pkg, idx)=>(
+                            <>
+                            <div className={`${idx % 2 === 0 ?"service-pkg bg-home":"service-pkg bg-white" }`}>
+                             <img src={`${idx % 2 === 0 ?okay: okaygr }` } className='me-2'/> 
+                                {languesState === "arb" ? pkg?.arb : pkg?.eng}
+                            </div>
+                      
+                            </>
+                          ))
+                         }
+                      </div>
+    
                     </div>
-                  </div>
-                  <div className='col-sm-12 col-md-8 col-lg-8'>
-                    <div className='service-pkg bg-white'>
-                    <img src={okaygr} className='me-2'/>
-                    Shared Working Space - Fully Equipped
                     </div>
-                    <div className='service-pkg bg-home'>
-                    <img src={okay} className='me-2'/>
-                    High-Speed Internet - Wifi
-                    </div>
-                    <div className='service-pkg bg-white'>
-                    <img src={okaygr} className='me-2'/>
-                    Copy-Machine And Printer
-                    </div>
-                    <div className='service-pkg bg-home'>
-                    <img src={okay} className='me-2'/>
-                    Hospitality
-                    </div> 
-                  </div>
-
-                </div>
-                </div>
-                <div className='mb-4'> 
-                <div className='row align-center'>
-                  <div className='col-sm-12 col-md-4 col-lg-4 content-center' >
-                    <div className='box-model-pkg p-4 text-center pt-5'>
-                      <p className='text-white'>1 Month - Monthly Payment</p>
-                      <h2 className='Crafting-lg-text'>1099 SAR</h2>
-                      <p className='color-home2'>SAR/Month</p>
-                    </div>
-                  </div>
-                  <div className='col-sm-12 col-md-8 col-lg-8'>
-                    <div className='service-pkg bg-white'>
-                    <img src={okaygr} className='me-2'/>
-                    Shared Working Space - Fully Equipped
-                    </div>
-                    <div className='service-pkg bg-home'>
-                    <img src={okay} className='me-2'/>
-                    High-Speed Internet - Wifi
-                    </div>
-                    <div className='service-pkg bg-white'>
-                    <img src={okaygr} className='me-2'/>
-                    Copy-Machine And Printer
-                    </div>
-                    <div className='service-pkg bg-home'>
-                    <img src={okay} className='me-2'/>
-                    Hospitality
-                    </div>
-                    <div className='service-pkg bg-white'>
-                    <img src={okaygr} className='me-2'/>
-                    24 Hour Access
-                    </div>
-                    <div className='service-pkg bg-home'>
-                    <img src={okay} className='me-2'/>
-                    24/7 Service
-                    </div>
-                    <div className='service-pkg bg-white'>
-                    <img src={okaygr} className='me-2'/>
-                    1St Step Lounge - Discount Rate
-                    </div>
-                    <div className='service-pkg bg-home'>
-                    <img src={okay} className='me-2'/>
-                    Small Meeting Room 2 Hours/Month
-                    </div> 
-                  </div>
-
-                </div>
-                </div>
-              <div className='mb-4'> 
-                <div className='row align-center'>
-                  <div className='col-sm-12 col-md-4 col-lg-4 content-center'>
-                    <div className='box-model-pkg p-4 text-center pt-5'>
-                      <p className='text-white'>3 Months (Immediate Payment, Or Two Installments)</p>
-                      <h2 className='Crafting-lg-text'>999 SAR</h2>
-                      <p className='color-home2'>SAR/Month</p>
-                    </div>
-                  </div>
-                  <div className='col-sm-12 col-md-8 col-lg-8'>
-                    <div className='service-pkg bg-white'>
-                    <img src={okaygr} className='me-2'/>
-                    Private Parking - Discounted Fees
-                    </div>
-                    <div className='service-pkg bg-home'>
-                    <img src={okay} className='me-2'/>
-                    High-Speed Internet - Wifi
-                    </div>
-                    <div className='service-pkg bg-white'>
-                    <img src={okaygr} className='me-2'/>
-                    Copy-Machine And Printer
-                    </div>
-                    <div className='service-pkg bg-home'>
-                    <img src={okay} className='me-2'/>
-                    Hospitality
-                    </div> 
-                    <div className='service-pkg bg-white'>
-                    <img src={okaygr} className='me-2'/>
-                    24 Hour Access
-                    </div>
-                    <div className='service-pkg bg-home'>
-                    <img src={okay} className='me-2'/>
-                    24/7 Service
-                    </div>
-                    <div className='service-pkg bg-white'>
-                    <img src={okaygr} className='me-2'/>
-                    1St Step Lounge - Discount Rate
-                    </div>
-                    <div className='service-pkg bg-home'>
-                    <img src={okay} className='me-2'/>
-                    Small Meeting Room 4 Hours/Month
-                    </div> 
-                    <div className='service-pkg bg-white'>
-                    <img src={okaygr} className='me-2'/>
-                    7 Free Counseling Sessions
-                    </div>
-                  </div>
-
-                </div>
-                </div>
-                <div className='mb-4'> 
-                <div className='row align-center'>
-                  <div className='col-sm-12 col-md-4 col-lg-4 content-center'>
-                    <div className='box-model-pkg p-4 text-center pt-5'>
-                      <p className='text-white'>6 Months (Immediate Payment, Or Two Installments)</p>
-                      <h2 className='Crafting-lg-text'>959 SAR</h2>
-                      <p className='color-home2'>SAR/Month</p>
-                    </div>
-                  </div>
-                  <div className='col-sm-12 col-md-8 col-lg-8'>
-                    <div className='service-pkg bg-white'>
-                    <img src={okaygr} className='me-2'/>
-                    Specialized Shared Working Space - Fully Equipped
-                    </div>
-                    <div className='service-pkg bg-home'>
-                    <img src={okay} className='me-2'/>
-                    High-Speed Internet - Wifi
-                    </div>
-                    <div className='service-pkg bg-white'>
-                    <img src={okaygr} className='me-2'/>
-                    Copy-Machine And Printer
-                    </div>
-                    <div className='service-pkg bg-home'>
-                    <img src={okay} className='me-2'/>
-                    Hospitality
-                    </div>
-                    <div className='service-pkg bg-white'>
-                    <img src={okaygr} className='me-2'/>
-                    24 Hour Access
-                    </div>
-                    <div className='service-pkg bg-home'>
-                    <img src={okay} className='me-2'/>
-                    24/7 Service
-                    </div>
-                    <div className='service-pkg bg-white'>
-                    <img src={okaygr} className='me-2'/>
-                    1St Step Lounge - Discount Rate
-                    </div>
-                    <div className='service-pkg bg-home'>
-                    <img src={okay} className='me-2'/>
-                    Small Meeting Room 4 Hours/Month
-                    </div>
-                    <div className='service-pkg bg-white'>
-                    <img src={okaygr} className='me-2'/>
-                    5 Free Counseling Sessions
-                    </div>
-                    <div className='service-pkg bg-home'>
-                    <img src={okay} className='me-2'/>
-                    Private Parking - Discounted Fees
-                    </div>
-                     
-
-                  </div>
-
-                </div>
-                </div>
-
-                <div className='mb-4'> 
-                <div className='row align-center'>
-                  <div className='col-sm-12 col-md-4 col-lg-4 content-center'>
-                    <div className='box-model-pkg p-4 text-center pt-5'>
-                      <p className='text-white'>1 Year (Immediate Payment Or Two Installments)</p>
-                      <h2 className='Crafting-lg-text'>899 SAR</h2>
-                      <p className='color-home2'>SAR/Month</p>
-                    </div>
-                  </div>
-                  <div className='col-sm-12 col-md-8 col-lg-8'>
-                    <div className='service-pkg bg-white'>
-                    <img src={okaygr} className='me-2'/>
-                    Specialized Shared Working Space - Fully Equipped
-                    </div>
-                    <div className='service-pkg bg-home'>
-                    <img src={okay} className='me-2'/>
-                    High-Speed Internet - Wifi
-                    </div>
-                    <div className='service-pkg bg-white'>
-                    <img src={okaygr} className='me-2'/>
-                    Copy-Machine And Printer
-                    </div>
-                    <div className='service-pkg bg-home'>
-                    <img src={okay} className='me-2'/>
-                    Hospitality
-                    </div>
-                    <div className='service-pkg bg-white'>
-                    <img src={okaygr} className='me-2'/>
-                    Copy-Machine And Printer
-                    </div>
-                    <div className='service-pkg bg-home'>
-                    <img src={okay} className='me-2'/>
-                    24 Hour Access
-                    </div>
-                    <div className='service-pkg bg-white'>
-                    <img src={okaygr} className='me-2'/>
-                    24/7 Service
-                    </div>
-                    <div className='service-pkg bg-home'>
-                    <img src={okay} className='me-2'/>
-                    1St Step Lounge - Discount Rate
-                    </div>
-                    <div className='service-pkg bg-white'>
-                    <img src={okaygr} className='me-2'/>
-                    Small Meeting Room 8 Hours/Month
-                    </div>
-                    <div className='service-pkg bg-home'>
-                    <img src={okay} className='me-2'/>
-                    7 Free Counseling Sessions
-                    </div>
-                    <div className='service-pkg bg-white'>
-                    <img src={okaygr} className='me-2'/>
-                    Private Parking - Discounted Fees
-                    </div>
-                     
-
-                  </div>
-
-                </div>
-                </div>
-              </Container>
+                  ))
+                }
+                    </Container>
             
           </Drawer>
         </React.Fragment>

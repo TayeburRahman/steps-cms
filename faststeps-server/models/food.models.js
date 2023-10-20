@@ -10,7 +10,7 @@ const foodModel = new mongoose.Schema(
                 type: Array, 
             },
             r3Content:{
-                type: Object,   
+                type: Array,   
             },
             r4Content:{
                 type: Object,   

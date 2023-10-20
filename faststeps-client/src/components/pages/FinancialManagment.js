@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -6,17 +6,18 @@ import consultation from '../../assets/Consultation-white.svg'
 import food from '../../assets/Food-white.svg'
 import line from '../../assets/line-white.png'
 import mony from '../../assets/mony-black.png'
-import office_black from '../../assets/office-black.svg'
+import office_black from '../../assets/office-white.png'
 import people from '../../assets/pepple-white.svg'
 import { useGetFinancialContentQuery, useGetHomeContentQuery } from '../../features/auth/authApi'
 import { useLanguesContext } from '../../hooks/LanguesContext'
 import Footer from '../shared/Footer'
+import Loader from '../shared/Loader'
 import { NavBar } from '../shared/NavBar'
 import AdvisoryPackages from './services/AdvisoryPackages'
 
 function FinancialManagment() {
     const [openValueS, setValueOpenS] = useState(false)
-    
+    const [isLoading, setLoader] = useState(false);
     const { languesState } = useLanguesContext(); 
 
     const { financial_content, home_content } = useSelector((state) => state.auth);
@@ -27,14 +28,22 @@ function FinancialManagment() {
     useGetFinancialContentQuery(); 
     useGetHomeContentQuery(); 
 
+    useEffect(() => {
+        !financial_content && setLoader(true)
+        financial_content && setLoader(false)
+    }, [financial_content])
+
 
     return (
-        <div>
+       <>
+       {
+        isLoading?(<Loader/>):(
+            <div>
             <div className='financial-banner'>
                 <NavBar />
                 <div className='background-overlay-office'></div>
                 <div className='d-flex banner-about'>
-                    <h2>Services</h2>
+                    <h2>{languesState==="arb"?"صفحة الخدمات":"Services"}</h2>
                 </div>
             </div>
             <div className='d-flex content-center mtop-50'>
@@ -43,7 +52,7 @@ function FinancialManagment() {
                         <Link to="/services" className='service-link-product service-product-off'>
 
                             <div className='d-flex font-18 color-white'>
-                                <img src={office_black} className='pe-3 image-link-service' />
+                                <img src={office_black} className='pe-3 image-link-service image-white-office' />
                                 {languesState=== "arb"? "المكاتب ومساحات العمل المشتركة":"Offices and Shared Working Spaces"}
                             </div>
                         </Link>
@@ -65,7 +74,7 @@ function FinancialManagment() {
 
                             <div className='d-flex font-18 color-white'>
                                 <img src={food} className='pe-3 image-link-service' />
-                                {languesState=== "arb"? "طعام وشراب":"Food & Beverage"}
+                                {languesState=== "arb"? "قطاع الأغذية والمشروبات":"Food & Beverage"}
                             </div>
 
 
@@ -76,7 +85,7 @@ function FinancialManagment() {
                         <Link to="/services/consultation_services" className='service-link-product service-product-off'> 
                             <div className='d-flex font-18 color-white'>
                                 <img src={people} className='pe-3 image-link-service' />
-                                {languesState=== "arb"? "الناس والمنظمة":"People & Organization"}
+                                {languesState=== "arb"? "ادارة الموظفين وتنظيمهم":"People & Organization"}
                             </div> 
                         </Link>
 
@@ -85,7 +94,7 @@ function FinancialManagment() {
                         <Link to="/services/financial_managment" className='service-link-product service-product-on'>
                             <div className='d-flex font-18 color-black'>
                                 <img src={mony} className='pe-3 image-link-service' style={{width:"40px"}} />
-                                {languesState=== "arb"? "ادارة مالية":"Financial Management"}
+                                {languesState=== "arb"? "الإدارة المالية":"Financial Management"}
                             </div>
 
                         </Link>
@@ -94,24 +103,24 @@ function FinancialManagment() {
                 </div>
             </div>
             <Container className='d-grid-c'> 
-            <div className='text-center text-black-html mx-w7 mt-3 mb-2 pt-5 pb-5'
+            <div className='text-center text-black-html mx-w7 mt-3 mb-2 pt-5 '
                             dangerouslySetInnerHTML={{
                                 __html: languesState === "arb" ? r1Content?.arb : r1Content?.eng,
                             }}>
                         </div>
-               <Link to="/contact" className='services-button-cu mb-5' > {languesState=== "arb"? "عزِّز عافيتك المالية الآن":"Boost Your Financial Wellness Now"}</Link>
+               <Link to="/contact" className='services-button-cu mb-5'  > {languesState=== "arb"? "عزز  من إيراداتك الآن!":"Boost Your Financial Wellness Now"}</Link>
              </Container>
              <div className='background-home'>
              <Container className='pt-5 pb-5 d-grid item-center'> 
              <div className='row w-80'>
-                         <p className='text-left text-white pb-2'>
-                         {languesState=== "arb"?  "عزز أموالك من خلال :" :"Boost your finances via:"}
+                         <p className='text-left text-white pb-2' id={`${languesState === "arb"&& "text-right"}`}>
+                         {languesState=== "arb"?  "عزز  من إيراداتك من خلال" :"Boost your finances via:"}
                            </p>
                             
                             {
                               r2Content && r2Content?.map((data, idx )=>(
                                 <div className='col-sm-12 col-md-6 col-lg-6 mt-3 mb-2'>
-                                <div className='d-flex-s'>
+                                <div  className={`${languesState === "arb" ?'d-flex-b':'d-flex-s'}`}>
                                     <div className=''>
                                     <img src={line} className='' />
                                     </div>
@@ -167,6 +176,9 @@ function FinancialManagment() {
              </Container>
              <Footer/>
         </div>
+        )
+       }
+       </>
     )
 }
 

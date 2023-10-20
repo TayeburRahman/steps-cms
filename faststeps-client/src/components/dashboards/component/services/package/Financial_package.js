@@ -1,0 +1,152 @@
+import { Box } from '@mui/material'
+import axios from 'axios'
+import React, { useState } from 'react'
+import { Container } from 'react-bootstrap'
+import { useSelector } from 'react-redux'
+import { useGetFinancialPackageQuery } from '../../../../../features/auth/authApi'
+import AddPackageOffer from './AddPackageOffer'
+import CreateFinancialPackage from './CreateFinancialPackage'
+import UpdateOffer from './UpdateOffer'
+
+function Financial_package() {
+    const [openAdd, setOpenAdd] = useState(false);
+    const [openPackage, setOpenPackage] = useState(false);
+
+
+    const [langues, setLangues] = useState("eng")
+    const [rIdx, setIdx] = useState()
+    const [idxEdit, setIdxEdit] = useState()
+    const [editPackage, setEditPackage] = useState()
+    const [editId, setEditId] = useState()
+    const [addId, setAddId] = useState()
+    const [packagesAdd, setSelectPackage] = useState()
+
+
+
+
+    useGetFinancialPackageQuery()
+    const { see_financial } = useSelector((state) => state.auth);
+
+
+
+    const handleOnSelectObjet = (data, idx) => {
+        setLangues(data)
+        setIdx(idx)
+    }
+    const handleEditOffer = (id, pkg, idx) => {
+        setEditId(id)
+        setEditPackage(pkg)
+        setIdxEdit(idx)
+    }
+
+    const handleOnAddOffer = (id, data) => {
+        setAddId(id)
+        setSelectPackage(data)
+        setOpenAdd(true)
+    }
+
+
+    const deleteOnAddOffer = (id, data) => {
+
+        axios.put(`http://localhost:5000/api/v1/service/offer/delete/${id}`,
+            {
+                eng: data?.eng,
+                arb: data?.arb
+            })
+            .then(res => {
+                if (res) {
+                    alert('Delete successfully')
+                }
+            });
+    }
+
+
+
+
+    return (
+        <div className="w-100">
+
+            <Box sx={{ boxShadow: 1, marginTop: "40px" }} >
+                <Container className=''>
+                    <div className=' text-center mb-2 border-settings'>
+                        <button className='services-button-cu mt-2 mb-2' onClick={e => setOpenPackage(true)}> Create A New Package </button>
+                        <CreateFinancialPackage openPackage={openPackage} setOpenPackage={setOpenPackage} />
+                    </div>
+
+                </Container>
+            </Box>
+
+            <Box sx={{ boxShadow: 1, marginTop: "40px" }} >
+                <Container className=''>
+                    <h5 className='pt-2 p-bg-100'>See Our Financial Management Packages</h5>
+                    {
+                        see_financial && see_financial?.map((data, idx) => (
+                            <div>
+
+                                <div className=' text-center mb-2 border-settings'>
+                                    <button className='button-handle-add' onClick={e => handleOnAddOffer(data?._id, data.package)}> Create New </button>
+                                    {data?._id === addId && <AddPackageOffer packages={packagesAdd} openAdd={openAdd} setOpenAdd={setOpenAdd} id={addId} />}
+                                </div>
+                                <div
+                                    className='text-center package-text pb-1'
+                                    dangerouslySetInnerHTML={{
+                                        __html: data?.package
+                                    }}>
+                                </div>
+
+                                <div className='row'>
+                                    {
+                                        data?.offer && data.offer?.map((pkg, idx) => (
+                                            <div key={idx} className='col-sm-12 col-md-6 col-lg-6 pb-1 pt-1'>
+                                                <div className='row object-settings'>
+                                                    <div className='col-sm-12 col-md-6 col-lg-6 pb-1 pt-1 d-flex-c'>
+                                                        {
+                                                            editPackage !== pkg && <button className='button-handle' onClick={(e) => handleEditOffer(data?._id, pkg, idx)}> Edit </button>
+                                                        }
+                                                        {
+                                                            editPackage === pkg && <button className='button-handle' onClick={(e) => handleEditOffer(null)} > Cancel </button>
+                                                        }
+                                                    </div>
+                                                    <div className='col-sm-12 col-md-6 col-lg-6 d-flex-c'>
+                                                        {editPackage === pkg ?
+                                                            <button className='button-handle bg-red' onClick={(e) => deleteOnAddOffer(data?._id, pkg)} > delete </button>
+                                                            :
+                                                            <div>
+                                                                <label>Langues</label>
+                                                                <select id="langues" name="langues" onClick={e => (handleOnSelectObjet(e.target.value, idx))}>
+                                                                    <option value="eng" >English</option>
+                                                                    <option value="arb">Arbi</option>
+                                                                </select>
+                                                            </div>
+                                                        }
+                                                    </div>
+                                                </div>
+                                                <div className='pb-3 pt-3'>
+                                                    <>
+                                                        {
+                                                            editPackage !== pkg && <p className='text-left'>{rIdx === idx && langues === "arb" ? pkg?.arb : pkg?.eng}</p>
+
+                                                        }
+                                                    </>
+                                                    <>
+                                                        {
+                                                            editPackage === pkg && <UpdateOffer langues={langues} editId={editId} packages={editPackage} setStatus={setIdxEdit} />
+                                                        }
+                                                    </>
+                                                </div>
+                                            </div>
+                                        ))}
+                                </div> 
+                            </div> 
+                        ))
+                    } 
+                </Container>
+
+            </Box> 
+
+
+        </div>
+    )
+}
+
+export default Financial_package

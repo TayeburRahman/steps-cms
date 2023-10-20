@@ -6,7 +6,6 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Outlet, useNavigate } from "react-router-dom";
 import {
-  useGetAllEventsQuery,
   useGetUserInfoQuery
 } from "../../features/auth/authApi";
 import "../css/main.css";
@@ -22,7 +21,7 @@ export default function Layout() {
     navigate("/login");
   }
   const { user } = useSelector((state) => state.auth);  
-  useGetAllEventsQuery(); 
+ 
   useGetUserInfoQuery(user?.email);
   useEffect(() => {  
   }, [  user?._id]);

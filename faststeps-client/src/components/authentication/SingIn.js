@@ -28,7 +28,7 @@ const SignIn = () => {
       }
 
       if (userData?.status === "success") {
-        navigate("/");
+        navigate("/dashboard");
       }
     },
     [

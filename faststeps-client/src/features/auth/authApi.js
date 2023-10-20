@@ -1,20 +1,29 @@
 import { apiSlice } from "../apiSlice";
 import {
   setAboutContent,
-  setAllEvents,
+  setConsulPackage,
   setConsultationContent,
   setContactContent,
   setFinancialContent,
+  setFinancialPackage,
   setFoodContent,
   setHomeContent,
+  setHumanPeoplePackage,
   setJoinContent,
+  setMeetingPackage,
+  setNoView12Package,
   setOfficeContent,
   setPeopleContent,
+  setRecuitmentPeoplePackage,
+  setSharedPackage,
   setUserInfo,
+  setView12Package,
+  setView18Package,
   userLoggedIn
 } from "./authSlice";
 
 export const authApi = apiSlice.injectEndpoints({
+  
   endpoints: (builder) => ({
     loginUser: builder.mutation({
       query: (data) => ({
@@ -217,28 +226,166 @@ export const authApi = apiSlice.injectEndpoints({
       },
     }),
 
+    postContactForm: builder.mutation({
+      query: (data) => ({
+        url: "/api/v1/form/contact/add",
+        method: "POST",
+        body: data,
+      }),
+    }),
 
-
-    getAllEvents: builder.query({
+    addJoinForm: builder.mutation({
+      query: (data) => ({
+        url: "/api/v1/form/join/add",
+        method: "POST",
+        body: data,
+      }),
+    }), 
+    getMeetingPackage: builder.query({
       query: () => ({
-        url: `api/v1/event/find`,
+        url: `api/v1/service/find/office/meeting_office`,
         method: "GET",
       }),
       async onQueryStarted(query, { queryFulfilled, dispatch }) {
         try {
           const result = await queryFulfilled;
-          dispatch(setAllEvents(result.data.event));
+          dispatch(setMeetingPackage(result.data.package));
+         
         } catch (error) {
           console.log("redux store error", error);
         }
       },
     }),
+    getSharedPackage: builder.query({
+      query: () => ({
+        url: `api/v1/service/find/office/shared_office`,
+        method: "GET",
+      }),
+      async onQueryStarted(query, { queryFulfilled, dispatch }) {
+        try {
+          const result = await queryFulfilled;
+          dispatch(setSharedPackage(result.data.package));
+         
+        } catch (error) {
+          console.log("redux store error", error);
+        }
+      },
+    }),
+    getView12Package: builder.query({
+      query: () => ({
+        url: `api/v1/service/find/office/view12_office`,
+        method: "GET",
+      }),
+      async onQueryStarted(query, { queryFulfilled, dispatch }) {
+        try {
+          const result = await queryFulfilled;
+          dispatch(setView12Package(result.data.package));
+         
+        } catch (error) {
+          console.log("redux store error", error);
+        }
+      },
+    }),
+    getNoView12Package: builder.query({
+      query: () => ({
+        url: `api/v1/service/find/office/noView12_office`,
+        method: "GET",
+      }),
+      async onQueryStarted(query, { queryFulfilled, dispatch }) {
+        try {
+          const result = await queryFulfilled;
+          dispatch(setNoView12Package(result.data.package));
+         
+        } catch (error) {
+          console.log("redux store error", error);
+        }
+      },
+    }),
+    getView18Package: builder.query({
+      query: () => ({
+        url: `api/v1/service/find/office/view18_office`,
+        method: "GET",
+      }),
+      async onQueryStarted(query, { queryFulfilled, dispatch }) {
+        try {
+          const result = await queryFulfilled;
+          dispatch(setView18Package(result.data.package));
+         
+        } catch (error) {
+          console.log("redux store error", error);
+        }
+      },
+    }),
+    getConsulPackage: builder.query({
+      query: () => ({
+        url: `api/v1/service/find/consul/explore_consul`,
+        method: "GET",
+      }),
+      async onQueryStarted(query, { queryFulfilled, dispatch }) {
+        try {
+          const result = await queryFulfilled;
+          dispatch(setConsulPackage(result.data.package));
+         
+        } catch (error) {
+          console.log("redux store error", error);
+        }
+      },
+    }),
+    getFinancialPackage: builder.query({
+      query: () => ({
+        url: `api/v1/service/find/financial/see_financial`,
+        method: "GET",
+      }),
+      async onQueryStarted(query, { queryFulfilled, dispatch }) {
+        try {
+          const result = await queryFulfilled;
+          dispatch(setFinancialPackage(result.data.package));
+         
+        } catch (error) {
+          console.log("redux store error", error);
+        }
+      },
+    }),
+    getHumanPeoplePackage: builder.query({
+      query: () => ({
+        url: `api/v1/service/find/people/human_people`,
+        method: "GET",
+      }),
+      async onQueryStarted(query, { queryFulfilled, dispatch }) {
+ 
+        try {
+          const result = await queryFulfilled;
+          dispatch(setHumanPeoplePackage(result.data.package)); 
+         
+        } catch (error) {
+          console.log("redux store error", error);
+        }
+      },
+    }),
+    getRecuitmentPeoplePackage: builder.query({
+      query: () => ({
+        url: `api/v1/service/find/people/recruitment_people`,
+        method: "GET",
+      }),
+      async onQueryStarted(query, { queryFulfilled, dispatch }) {
+        try {
+          const result = await queryFulfilled;
+          dispatch(setRecuitmentPeoplePackage(result.data.package));
+         
+        } catch (error) {
+          console.log("redux store error", error);
+        }
+      },
+    }),
+   
   }),
 });
 
 export const {
   useLoginUserMutation,
   useRegistrationMutation, 
+  useAddJoinFormMutation, 
+  usePostContactFormMutation,
   useGetHomeContentQuery, 
   useGetAboutContentQuery, 
   useGetJoinContentQuery, 
@@ -247,10 +394,16 @@ export const {
   useGetFoodContentQuery,
   useGetConsultationContentQuery,
   useGetPeopleContentQuery,
+  useGetMeetingPackageQuery,
+  useGetSharedPackageQuery,
+  useGetView12PackageQuery,
+  useGetNoView12PackageQuery,
+  useGetView18PackageQuery,
   useGetFinancialContentQuery,
+  useGetConsulPackageQuery,
+  useGetFinancialPackageQuery, 
+  useGetHumanPeoplePackageQuery, 
+  useGetRecuitmentPeoplePackageQuery,  
 
-   
-
-  useGetUserInfoQuery, 
-  useGetAllEventsQuery,
+  useGetUserInfoQuery,  
 } = authApi;

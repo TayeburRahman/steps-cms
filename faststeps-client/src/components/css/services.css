@@ -55,6 +55,9 @@
   height: 100%;
   background: linear-gradient(90deg, #00ffaa4b 0%, #0b3d41d3 100%);
 }
+.image-white-office {
+  width: 90px !important;
+}
 
 .mx-w1300 {
   max-width: 1350px;
@@ -229,6 +232,11 @@
   align-items: flex-start;
   justify-content: flex-start;
 }
+.d-flex-b {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
 .w-70 {
   width: 70%;
 }
@@ -356,7 +364,6 @@
   .w-70 {
     width: 100%;
   }
-
   .mx-w45 {
     max-width: 100% !important;
   }

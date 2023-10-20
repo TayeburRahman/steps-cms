@@ -74,19 +74,7 @@ const { createJoinFastContent, updateJoinFastContent, updateJoinFastContentArb, 
 
  router.route("/contact/2nd/eng/update").put(updateContactSecondContent);
  router.route("/contact/2nd/arb/update").put(updateContactSecondContentArb);
- 
-
-
-
- 
-
-   
-//   router.route("/home/1st/eng/update").put(updateFastContent);
- 
   
-  // router.route('/update/profile/:email').put(
-  //   upload.single("avatar"), 
-  //   updateProfileImage);  
   
   
   module.exports = router;

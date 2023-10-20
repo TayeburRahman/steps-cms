@@ -492,6 +492,57 @@ try {
     res.status(500).send('Internal Server Error');
 }
 };
+const createFoodR3Content = async (req, res) => {
+    try { 
+    const engValue = req.body.eng; // 'eng' value
+    const arbValue = req.body.arb; // 'arb' value
+
+  
+        // If contentId is not provided, create new data
+        const newContent = { eng: engValue, arb: arbValue };
+        const doc = await foodModels.findOneAndUpdate({}, { $push: { r2Content: newContent } }, { new: true });
+
+        if (!doc) {
+            return res.status(404).send('Document not found');
+        }
+
+        res.json(doc);
+  
+} catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+}
+};
+
+const updateFoodR3Content  = async (req, res) => {
+    try {
+        const precedingEngValue = req.body.eng; // 'eng' value of preceding object
+        const precedingArbValue = req.body.arb; // 'bng' value of preceding object
+        const updatedData = req.body.updated; // New values for the next object 
+        const updatedDocument = await foodModels.findOneAndUpdate(
+            {
+                'r2Content.array.eng': precedingEngValue,
+                'r2Content.array.arb': precedingArbValue,
+            },
+            {
+                $set: {
+                    'r2Content.array.$.eng': updatedData.eng,
+                    'r2Content.array.$.arb': updatedData.arb,
+                },
+            },
+            { new: true }
+        );
+    
+        if (!updatedDocument) {
+            return res.status(404).send('Document with preceding data not found');
+        }
+    
+        res.json({ message: "Update successful", updatedDocument: updatedDocument });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+    };
 
 //   -------------------
 const createFoodPeople= async (req, res) => {

@@ -1,9 +1,8 @@
-import { useSelector } from "react-redux";
+export default function useAdmin(){ 
+    const localAuth = localStorage?.getItem("auth");  
+    const {user, token} = JSON.parse(localAuth); 
 
-export default function useAuth(){
-    const auth = useSelector(state => state.auth);
-
-    if(auth?.token && auth?.user){
+    if( user?.role === "admin" && token){
         return true; 
     } else{
         return false;

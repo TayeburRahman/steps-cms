@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { HelmetProvider } from 'react-helmet-async';
 import 'react-quill/dist/quill.snow.css';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
@@ -15,15 +16,18 @@ import { LanguesProvider } from './hooks/LanguesContext';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter> 
-    <Provider store={store}> 
+    <BrowserRouter>
+    <HelmetProvider> 
+     <Provider store={store}> 
        <LanguesProvider> 
         <App />
         </LanguesProvider>
-     </Provider>
+     </Provider> 
+     </HelmetProvider>  
     </BrowserRouter>
   </React.StrictMode>
 );

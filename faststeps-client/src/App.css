@@ -35,6 +35,14 @@
   margin: 0;
 }
 
+#almarai {
+  font-family: "Almarai", sans-serif !important;
+}
+
+#comfortaa {
+  font-family: "Comfortaa", sans-serif !important;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

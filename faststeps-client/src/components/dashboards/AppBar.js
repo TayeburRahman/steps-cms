@@ -3,7 +3,7 @@ import Typography from "@mui/material/Typography";
 import React from "react";
 // import { useLocation } from "react-router-dom";
 import logo from "../../assets/logo.svg";
-import profile from "../../assets/profile-img.png";
+import profile from "../../assets/profile.avif";
 function NavBar() {
   // const { pathname } = useLocation();
 

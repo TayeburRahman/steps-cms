@@ -14,6 +14,15 @@ const initialState = {
   people_content: undefined,
   financial_content: undefined,
   lan_v: undefined, 
+  shared_office: undefined, 
+  view12_office: undefined,
+  noView12_office: undefined,
+  view18_office: undefined, 
+  meeting_office: undefined, 
+  explore_consul: undefined, 
+  see_financial:undefined,
+  human_people:undefined,
+  recruitment_people:undefined,
 
 
   scanHistory: undefined,
@@ -72,7 +81,37 @@ const authSlice = createSlice({
     setFinancialContent: (state, action) => {
       state.financial_content = action.payload;
     },
+    setSharedPackage: (state, action) => {
+      state.shared_office = action.payload;
+    },
+    setMeetingPackage: (state, action) => {
+      state.meeting_office = action.payload;
+    },
+    setView12Package: (state, action) => {
+      state.view12_office = action.payload;
+    },
+    setNoView12Package: (state, action) => {
+      state.noView12_office = action.payload;
+    }, 
+    setView18Package: (state, action) => {
+      state.view18_office = action.payload;
+    },
+    setConsulPackage: (state, action) => {
+      state.explore_consul = action.payload;
+    }, 
+    setFinancialPackage: (state, action) => {
+      state.see_financial = action.payload;
+    },
+    setHumanPeoplePackage: (state, action) => {
+      state.human_people = action.payload;
+    },
+    setRecuitmentPeoplePackage: (state, action) => {
+      state.recruitment_people = action.payload;
+    },
 
+     
+     
+     
     
 
 
@@ -89,6 +128,9 @@ const authSlice = createSlice({
     setAllEvents: (state, action) => {
       state.allEvents = action.payload;
     },
+ 
+
+     
   },
 });
 
@@ -105,6 +147,15 @@ export const {
   setConsultationContent,
   setPeopleContent,
   setFinancialContent, 
+  setSharedPackage, 
+  setMeetingPackage,
+  setView12Package,
+  setNoView12Package,
+  setView18Package,
+  setConsulPackage,
+  setFinancialPackage,
+  setHumanPeoplePackage, 
+  setRecuitmentPeoplePackage,
 
 
   setScanHistory,

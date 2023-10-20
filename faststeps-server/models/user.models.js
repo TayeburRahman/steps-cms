@@ -47,20 +47,7 @@ const userModel = new mongoose.Schema(
     },
     avatar: {
       type: String
-    },
-    friends: {
-      type: Array,
-    },
-    points: {
-      type: Number,
-    },
-    award: {
-      type: Number,
-    },
-    scan_product_list: {},
-    scanned_products: {
-      type: Array,
-    },
+    }, 
     status: {
       type: String,
       default: "active",

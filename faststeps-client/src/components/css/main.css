@@ -132,3 +132,37 @@
 .quill_size {
   height: 100px !important;
 }
+
+/* CSS */
+.button-88 {
+  display: flex;
+  align-items: center;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 0.5em 1.4em 0.5em 1.1em;
+  color: white !important;
+  background: #ad5389;
+  background: linear-gradient(
+    0deg,
+    rgb(10, 116, 80) 0%,
+    rgb(102, 247, 179) 100%
+  );
+  border: none;
+  box-shadow: 0 0.7em 1.5em -0.5em #14a73e4b;
+  letter-spacing: 0.05em;
+  border-radius: 20em;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  text-decoration: none !important;
+}
+
+.button-88:hover {
+  box-shadow: 0 0.5em 1.5em -0.5em #14a73e98;
+}
+
+.button-88:active {
+  box-shadow: 0 0.3em 1em -0.5em #14a73e98;
+}

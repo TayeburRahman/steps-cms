@@ -62,6 +62,40 @@ const style = {
   p: 4,
 };
 
+const modules = {
+  toolbar: [
+    [{ header: [1, 2,3,4,5, false] }],
+    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+    [{ list: 'ordered' }, { list: 'bullet' }],
+    [{ align: '' }, { align: 'center' }, { align: 'right' }, { align: 'justify' }],
+    ['link', 'image'],
+  ],
+};
+
+const formats = [
+  'header',
+  'font',
+  'size',
+  'bold',
+  'italic',
+  'underline',
+  'strike',
+  'blockquote',
+  'list',
+  'bullet',
+  'indent',
+  'link',
+  'image',
+  'color',
+  'size',
+  'video',
+  'align',
+  'background',
+  'direction',
+  'code-block',
+  'code',
+  ];
+
 export default function AddObjects({ openR2, setOpenR2, name, row }) {
 
   const [valueEng, setValueEng] = useState('');
@@ -146,6 +180,7 @@ export default function AddObjects({ openR2, setOpenR2, name, row }) {
                     </Typography>
 
                     <ReactQuill theme="snow" className='quill_size'
+                       modules={modules} formats={formats}
                        defaultValue={valueEng}
                       onChange={setValueEng}
                     />
@@ -160,6 +195,7 @@ export default function AddObjects({ openR2, setOpenR2, name, row }) {
                       Arabic Text
                     </Typography>
                     <ReactQuill theme="snow" className='quill_size'
+                       modules={modules} formats={formats}
                        defaultValue={valueArb}
                       onChange={setValueArb}
                     />

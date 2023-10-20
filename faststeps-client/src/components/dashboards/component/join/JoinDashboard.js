@@ -61,8 +61,6 @@ function JoinDashboard() {
  
  
 
-    console.log(languesBanner)
-
 
     return (
         <div className="w-100">

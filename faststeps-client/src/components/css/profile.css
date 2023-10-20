@@ -1,3 +1,98 @@
+/* ----------------- */
+.email_text {
+  font-family: George !important;
+  font-size: 16px !important;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  margin: 0 !important;
+  color: #808080;
+}
+.profile_title {
+  font-family: George Rounded !important;
+  font-size: 24px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 24px !important;
+}
+
+.profile_bg_top {
+  background-image: url("../../assets/backgrount_profile.jpg");
+  height: 250px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 7px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.details_box {
+  width: 95% !important;
+  height: 120px;
+  background: #fffee6 !important;
+  margin-top: -100px !important;
+  position: absolute;
+  bottom: -40px;
+  border-radius: 7px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0px 1px 0px,
+    rgba(255, 255, 255, 0.25) 0px 1px 0px inset;
+}
+.profile_image {
+  width: 120px;
+  height: 120px;
+  border: 5px solid #ffffff;
+  border-radius: 50%;
+}
+.property_end {
+  margin-top: -50px !important;
+  align-items: flex-end;
+}
+
+/* --------------- */
+.show_p_number {
+  max-width: 533px;
+  height: 38px;
+  color: #c5c5c5;
+  border: 1px solid #c5c5c5;
+  border-radius: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 10px;
+}
+.phone_text {
+  font-family: George Rounded !important;
+  font-size: 16px;
+  font-style: normal;
+  line-height: 24px;
+  color: #808080;
+  text-align: left;
+  margin-bottom: 10px !important;
+}
+
+.profile_phone {
+  width: 100% !important;
+  height: auto !important;
+}
+
+.react-tel-input .form-control {
+  width: 100% !important;
+}
+.color-gre {
+  color: #5c5c5c;
+}
+
+.error {
+  width: 100% !important;
+  background: #ffe7e7;
+  padding: 4px;
+  color: rgb(59, 59, 59);
+  border-radius: 5px;
+  border: 1px solid rgb(255, 169, 169);
+}
+
 .editProfileButton {
   border: none !important;
   border-radius: 25px;
@@ -22,32 +117,104 @@
   min-height: 30vh !important;
 }
 
-.updateImage {
-  font-weight: 400 !important;
-  font-size: 15px !important;
-  line-height: 1.5 !important;
-  color: rgba(0, 0, 0, 0.89) !important;
-  width: 100%;
-  border-radius: 0px !important;
-}
-.buttonOpenUpdate {
-  width: 30px;
-  border: none;
-  margin-left: 10px;
-  background: none;
-  border-radius: 25px;
-  display: flex;
-  justify-content: center;
+.services-button-cu {
+  border: 1px solid rgba(0, 0, 0, 0.521);
+  width: 250px;
+  height: 35px;
+  border-radius: 3px;
+  margin: 10px;
 }
 
-.buttonOpenUpdate:hover {
-  background: rgba(125, 168, 114, 0.089);
+.package-text h2 {
+  color: rgb(95, 233, 168);
+  font-size: 30px;
+  padding: 0px;
+  margin: 0px;
 }
+.package-text h3 {
+  color: rgb(95, 233, 168);
+  font-size: 16px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.package-text p {
+  padding: 0px;
+  margin: 0px;
+}
+
+.routing-ser {
+  background: rgb(5, 48, 28);
+  color: white !important;
+  border-right: 2px solid rgb(233, 233, 233);
+  display: flex;
+  justify-content: center;
+  height: 60px;
+  align-items: center;
+}
+.routing_n {
+  text-decoration: none;
+  color: white !important;
+  width: 100%;
+}
+.routing_n p {
+  padding: 0px;
+  margin: 0px;
+}
+#bg-change-route {
+  background: rgb(64, 209, 141);
+}
+.nested-routing-db {
+  justify-content: center;
+}
+.p-bg-100 {
+  background: rgb(5, 48, 28);
+  height: 60px;
+  color: white;
+  padding: 0px;
+}
+
 @media only screen and (max-width: 600px) {
   .border-box h6 {
     font-size: 12px !important;
   }
   .border-box h5 {
     font-size: 20px !important;
+  }
+
+  .border-box h6 {
+    font-size: 12px !important;
+  }
+  .border-box h5 {
+    font-size: 20px !important;
+  }
+  .button-change {
+    font-size: 10px !important;
+    height: 28px;
+  }
+
+  .icon_edit_profile {
+    width: 15px !important;
+  }
+
+  .button_edit_profile {
+    font-size: 10px !important;
+    height: 28px;
+    width: 160px !important;
+  }
+  .profile_image {
+    width: 65px;
+    height: 65px;
+  }
+  .profile_title {
+    font-size: 14px !important;
+    text-align: left;
+  }
+  .email_text {
+    font-size: 12px !important;
+  }
+
+  .profile_title {
+    padding-top: 50px !important;
   }
 }

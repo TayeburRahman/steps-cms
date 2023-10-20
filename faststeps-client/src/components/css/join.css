@@ -110,6 +110,12 @@
   height: 20px;
 }
 /* ---------------- */
+.loin_form_arb {
+  display: grid;
+  justify-items: center;
+  justify-content: center;
+  padding-top: 25px;
+}
 
 /* ------------------------ */
 .text-anime h2 {

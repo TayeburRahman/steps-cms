@@ -144,7 +144,8 @@
     width: 100% !important;
   }
   .about-cover {
-    bottom: 35px;
+    bottom: 22px;
+    height: 125px;
   }
   .mx-80 {
     width: 90%;
@@ -168,7 +169,7 @@
   }
 
   .about-cover {
-    bottom: -70px;
+    bottom: 25px;
     /* z-index: 10; */
   }
   .about_logo30 {

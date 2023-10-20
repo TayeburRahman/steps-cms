@@ -18,12 +18,14 @@ import scroll from '../../assets/scroll-down.svg'
 import { useGetHomeContentQuery } from '../../features/auth/authApi'
 import { useLanguesContext } from '../../hooks/LanguesContext'
 import Footer from '../shared/Footer'
+import Loader from '../shared/Loader'
 import { NavBar } from '../shared/NavBar'
 
 function Home() {
     const [name, setName] = useState('')
+    const [isLoading, setLoader] = useState(false);
     const { home_content } = useSelector((state) => state.auth);
-    const { languesState } = useLanguesContext();
+    const { languesState } = useLanguesContext(); 
 
     const r1Content = home_content?.banner;
     const r2Content = home_content?.r2Content;
@@ -44,39 +46,43 @@ function Home() {
         setName('home')
     }, [])
 
+    useEffect(() => {
+       !home_content && setLoader(true)
+       home_content && setLoader(false)
+    }, [home_content])
+  
+
     return (
-        <div >
+          <>
+          {
+            isLoading ? (<Loader/>):(
+                <div>
             <div className='banner-home banner-top'>
                 <NavBar />
-                <div className='banner-container' >
-
-                    <Container className='banner-text' >
+                <div className='banner-container' > 
+                    <Container className='banner-text' id={`${languesState === "arb" && "d-grid-r"}`} >
                         <div
                             className='text-left text-anime dfl-lefts padding-p mx-w6'
                             id={`${name === 'home' ? "dfl-leftShow" : ""}`}
                             dangerouslySetInnerHTML={{
                                 __html: languesState === "arb" ? r1Content?.arb : r1Content?.eng,
                             }}>
-                        </div>
-
-                        <p className='more-icon mt-3'> <img src={right} className='move-icon me-2' />
-                            {languesState === "arb" ? "يتعلم أكثر" : "Learn More"}  </p>
-
-
+                        </div> 
+                        <p className='more-icon mt-3' id={`${languesState === "arb" && "text-right"}`}> <img src={right} className='move-icon me-2' />
+                            {languesState === "arb" ? "يتعلم أكثر" : "Learn More"}  </p> 
                     </Container>
 
                     <div className='scroll '>
-                        <Link to="/home#all" as={HashLink}>
-                            <h6 className='text-scroll'>{languesState === "arb" ? "حرك الفأرة لأسفل" : "Scroll Down"}</h6>
+                        <Link to="/home#solutions" as={HashLink}>
+                            <h6 className='text-scroll'>{languesState === "arb" ? "اسحب للأسفل" : "Scroll Down"}</h6>
                             <img className='image-scroll' src={scroll} />
                         </Link>
                     </div>
                 </div>
             </div>
-            <Container className='excellence text-left mt-3 mb-4 text-ani-div mx-w'>
-
+            <Container className='excellence text-left mt-3 mb-4 text-ani-div mx-w'> 
                 <div
-                    className='text-left mx-w5'
+                    className='text-left mx-w5 text-black-html'
                     dangerouslySetInnerHTML={{
                         __html: languesState === "arb" ? r2Content?.arb : r2Content?.eng,
                     }}>
@@ -84,8 +90,8 @@ function Home() {
             </Container>
 
             <div className="row background-craping" >
-                <div className='col-sm-12 col-md-5 col-lg-5 padding-0' id="all"><img className='background-craping-img' src={man_img} /></div>
-                <div className='col-sm-12 col-md-7 col-lg-7 d-flex-c '>
+                <div className='col-sm-12 col-md-5 col-lg-5 padding-0' id="solutions"><img className='background-craping-img' src={man_img} /></div>
+                <div className='col-sm-12 col-md-7 col-lg-7 d-flex-c p_lg_md_100'>
                     <div className='Path'>
                         <img className='Path4843' src={Path4843} />
                         <img className='Path4843o' src={Path4843o} />
@@ -99,21 +105,18 @@ function Home() {
                         </div>
                     </div>
                 </div>
-            </div>
-
-
-
-            <div className='comprehensive text-animation-container-z'>
+            </div> 
+             <div className='comprehensive text-animation-container-z'>
                 <Container className='text-left animation-content-z'>
                     <div
-                        className='text-left mx-w5'
+                        className='text-left mx-w5 text-black-html'
                         dangerouslySetInnerHTML={{
                             __html: languesState === "arb" ? r4Content?.arb : r4Content?.eng,
                         }}>
                     </div>
 
                 </Container>
-            </div>
+            </div> 
 
             <div className='business pt-5 pb-5 padding-top-0'>
                 <div className='business-bg'></div>
@@ -121,23 +124,22 @@ function Home() {
                     <div className='row'>
                         <div className='col-sm-12 col-md-5 col-lg-5 pb-5'>
                             <div
-                                className='text-left mx-w5 text-white-html mb-4 pb-1'
+                                className='text-left mx-w5 text-white-html-org mb-4 pb-1'
                                 dangerouslySetInnerHTML={{
                                     __html: languesState === "arb" ? r5Content?.arb : r5Content?.eng,
                                 }}>
-                            </div>
-
-
-
+                            </div> 
+                            <div className={`${languesState === "arb" &&"text-right"}`}>
                             <Link className='more-link mt-5' as={HashLink} to="/contact"> {languesState === "arb" ? "يتعلم أكثر" : "Learn More"} </Link>
+                            </div>
                         </div>
                         <div className='col-sm-12 col-md-7 col-lg-7 ps-5 mb-4 padding-sm-none'>
-                            <div className='d-flex business_right'> <img className='image-business ' src={one} /> <p>Streamlining Business Processes For Optimized Operations</p></div>
-                            <div className='d-flex business_right'> <img className='image-business ' src={tow} /> <p>Unlocking Unparalleled Opportunities Tailored For Growth</p></div>
-                            <div className='d-flex business_right'> <img className='image-business ' src={three} /> <p>Catalyzing Potential Into Tangible Growth Trajectories</p></div>
-                            <div className='d-flex business_right'> <img className='image-business ' src={fore} /> <p>Cultivating Skills While Fortifying Core Competencies</p></div>
-                            <div className='d-flex business_right'> <img className='image-business ' src={five} /> <p>Fostering A Culture Of Innovation And Entrepreneurial Vigor</p></div>
-                            <div className='d-flex business_right'> <img className='image-business ' src={six} /> <p>Offering Seasoned Expertise And Insightful Consultancy Services</p></div>
+                            <div className='d-flex business_right'> <img className='image-business ' src={one} /> <p className='ms-2'> {languesState === "arb" ?"تسهيل العمليات التجارية لتحسين النتائج":"Streamlining Business Processes For Optimized Operations"}</p></div>
+                            <div className='d-flex business_right'> <img className='image-business ' src={tow} /> <p className='ms-2'>{languesState === "arb" ? "إيجاد فرص متفردة صممت خصيصًا لتحقيق النمو":"Unlocking Unparalleled Opportunities Tailored For Growth"}</p></div>
+                            <div className='d-flex business_right'> <img className='image-business ' src={three} /> <p className='ms-2'>{languesState === "arb" ? "تحفيز الإمكانات وتحويلها إلى مسارات نمو ملموسة":"Catalyzing Potential Into Tangible Growth Trajectories"}</p></div>
+                            <div className='d-flex business_right'> <img className='image-business ' src={fore} /> <p className='ms-2'>{languesState === "arb" ? "دعم المهارات و تقوية الكفاءات الأساسية":"Cultivating Skills While Fortifying Core Competencies"}</p></div>
+                            <div className='d-flex business_right'> <img className='image-business ' src={five} /> <p className='ms-2'>{languesState === "arb" ?"تعزيز ثقافة الابتكار ونشاط ريادة الأعمال":"Fostering A Culture Of Innovation And Entrepreneurial Vigor"}</p></div>
+                            <div className='d-flex business_right'> <img className='image-business ' src={six} /> <p className='ms-2'>{languesState === "arb" ?"تقديم خبرة متمرسة وخدمات استشارية ذات رؤية واضحة":"Offering Seasoned Expertise And Insightful Consultancy Services"}</p></div>
                         </div>
                     </div>
 
@@ -186,16 +188,15 @@ function Home() {
                                 __html: languesState === "arb" ? r9Content?.arb : r9Content?.eng,
                             }}>
                         </div>
-
+                        <div className={`${languesState === "arb" &&"text-right"}`}>
                         <Link className='contact-link' as={HashLink} to="/contact"> {languesState === "arb" ? "اتصل بنا " : "Contact Us"}   </Link>
+                        </div>
                     </div>
                 </div>
                 <div className='d-flex-c mt-5'><div className='border-dv'></div> </div>
 
                 <div className='row align-center'>
-                    <div className='col-md-5 col-sm-12 col-lg-5 mt-5'>
-
-
+                    <div className='col-md-5 col-sm-12 col-lg-5 mt-5'> 
                         <div
                             className='text-left mx-w6 text-black-html mb-4 pb-1'
                             dangerouslySetInnerHTML={{
@@ -220,7 +221,12 @@ function Home() {
 
             <Footer />
         </div>
+            )
+          }
+          </>
     )
 }
 
 export default Home
+
+

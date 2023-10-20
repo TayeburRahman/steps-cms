@@ -18,8 +18,10 @@ connectDB()
 
 /* Use Routes  */
 app.use('/api/v1/user', require("./router/user.router")); 
-app.use('/api/v1', require("./router/content.router")); 
+app.use('/api/v1', require("./router/pages.router")); 
 app.use('/api/v1', require("./router/services.router")); 
+app.use('/api/v1/form', require("./router/form.router")); 
+app.use('/api/v1/service', require("./router/package.router")); 
 
 // app.use('/uploads', express.static('./uploads'));
 
