@@ -48,20 +48,20 @@ export default function MeetingRoom({setValueOpen,openValue}) {
             anchor={anchor}
             open={state[anchor]} >
               <Header/>
-              <Container className=''>
+              <Container id={`${languesState ==="arb"?"almarai":"comfortaa"}`}>
                 <div className='text-center text-white d-grid-c mb-5'>
                   <p className='w-70'>{languesState === "arb" ? "عبارة عن مساحة واسعة تتيح لرواد الأعمال وممارسي الأعمال الحرة فرصة اختيار مساحة شاغرة والعمل في بيئة واحدة تجمع عدة مكاتب معاً":"A spacious area that gives entrepreneurs and freelancers the opportunity to choose a vacant space and work together in one environment that brings together several offices."}</p>
                   <p className='w-70'>{languesState === "arb" ? "توفر المساحة المشتركة خدمات مختلفة ومتميزة وتقدم الوسائل التي تساعد مجموعات العمل على تحقيق مشروعاتهم": "The common space provides the means and different special services to help working groups achieve their tasks."}</p>
                 </div>
                 {
                   meeting_office && meeting_office?.map((data, idx)=>(
-                    <div className='mb-4'> 
+                    <div key={idx} className='mb-4' id={`${languesState ==="arb"?"almarai":"comfortaa"}`}> 
                     <div className='row align-center'>
                       <div className='col-sm-12 col-md-4 col-lg-4 content-center'>
                       <div
                             className='box-model-pkg p-4 text-center pt-5 lg-text-color'
                             dangerouslySetInnerHTML={{
-                                __html: data?.package
+                                __html: languesState === "arb"? data?.packageArb : data?.packageEng
                             }}>
                         </div> 
                       </div>

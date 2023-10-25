@@ -9,8 +9,8 @@ const createFromContact = async (req, res) => {
  
         // info@1ststeps.com.sa
         const mailData = {
-            to: "tayebrayhan101@gmail.com",
-            subject: '1stSteps contact massage',
+            to: "info@1ststeps.com.sa",
+            subject: '1stSteps contact us massage',
             text:"Send a 'Contact' message on your 1stSteps Website",
             name: data?.name,
             inquiry: data?.inquiry,
@@ -57,7 +57,7 @@ const createFromJoin = async (req, res) => {
         // jobs@1ststeps.com.sa
         const mailData = {
             to: "jobs@1ststeps.com.sa",
-            subject: '1stSteps contact massage',
+            subject: '1stSteps join us massage',
             text:"Send a 'Join' letter on your 1stSteps Website",
             name: data?.name,
             company: data?.company,

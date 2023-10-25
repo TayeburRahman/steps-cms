@@ -80,8 +80,7 @@ function App() {
                 element={ <Packages />  }
               >
                 <Route path="" element={<Office_package />} />
-                <Route path="consultation_services" element={<Consul_package />} />
-                {/* <Route path="offices_services" element={<Food_Beverage />} /> */}
+                <Route path="consultation_services" element={<Consul_package />} /> 
                 <Route path="financial_Management" element={<Financial_package />} /> 
                 <Route path="people_organization" element={<People_package />} /> 
               </Route>

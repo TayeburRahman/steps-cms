@@ -52,7 +52,7 @@ function ConsultationServices() {
                             </div>
                         </div>
                         <div className='d-flex content-center mtop-50'>
-                            <div className='mx-w1300 d-flex-b row'>
+                            <div className='mx-w1300 content-center row'>
                                 <div className='col-md-3 col-xs-6 col-sm-6 col-lg-2 padding0-se margin-3 sm-custom'>
                                     <Link to="/services" className='service-link-product service-product-off'>
 
@@ -129,15 +129,18 @@ function ConsultationServices() {
                                     {
                                         r2Content && r2Content?.map((data, idx) => (
                                             <div key={idx} className='col-sm-12 col-md-6 col-lg-6 mt-3 mb-2'>
-                                                <div className={`${languesState === "arb" ?'d-flex-b':'d-flex-s'}`}>
-                                                    <div className=''>
+                                                <div className={`${languesState === "arb" ?'d-flex-e':'d-flex-s'}`}>
+                                                    {languesState !== "arb"&& <div className=''>
                                                         <img src={line} className='' />
-                                                    </div>
+                                                    </div>}
                                                     <div className='object-div'
                                                         dangerouslySetInnerHTML={{
                                                             __html: languesState === "arb" ? data?.arb : data?.eng,
                                                         }}>
                                                     </div>
+                                                   {languesState === "arb"&& <div className='ms-3'>
+                                                        <img src={line} className='' />
+                                                    </div>}
                                                 </div>
                                             </div>
                                         ))
@@ -173,7 +176,7 @@ function ConsultationServices() {
                                     __html: languesState === "arb" ? r4Content?.arb : r4Content?.eng,
                                 }}>
                             </div>
-                            <button className='services-button mb-5' >  {languesState === "arb" ? "شاركنا رؤيتك الآن!" : "Launch Your Vision Now"}</button>
+                            <Link to="/contact" className='services-button mb-5' >  {languesState === "arb" ? "شاركنا رؤيتك الآن!" : "Launch Your Vision Now"}</Link>
                         </Container>
 
                         <div className='background-home'>

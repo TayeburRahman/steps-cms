@@ -411,4 +411,8 @@
   .mx-w45 {
     max-width: 100% !important;
   }
+
+  .font-18 {
+    font-size: 14px !important;
+  }
 }

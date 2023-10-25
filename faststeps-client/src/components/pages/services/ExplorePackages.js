@@ -51,10 +51,10 @@ export default function ExplorePackages({setValueOpenE,openValueE}) {
             open={state[anchor]} >
               <Header/>
                
-              <div className='text-center text-white d-grid-c mb-5'>
+              <div className='text-center text-white d-grid-c mb-5' id={`${languesState ==="arb"?"almarai":"comfortaa"}`}>
                   <p className='w-70'> {languesState === "arb" ?"خدمات استشارية لرواد الأعمال والشركات الناشئة":"Entrepreneurs & Startups Consultation Services"} </p>
                 </div>
-                   <Container className=''> 
+                   <Container id={`${languesState ==="arb"?"almarai":"comfortaa"}`}> 
                      {
                   explore_consul && explore_consul?.map((data, idx)=>(
                     <div className='mb-4'> 
@@ -63,7 +63,7 @@ export default function ExplorePackages({setValueOpenE,openValueE}) {
                       <div
                             className='box-model-pkg p-4 text-center pt-5 lg-text-color'
                             dangerouslySetInnerHTML={{
-                                __html: data?.package
+                                __html:languesState === "arb"? data?.packageArb : data?.packageEng
                             }}>
                         </div> 
                       </div>

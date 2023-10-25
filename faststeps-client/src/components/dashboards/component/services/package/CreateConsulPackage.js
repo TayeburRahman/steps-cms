@@ -81,7 +81,8 @@ export default function CreateConsulPackage({ openPackage, setOpenPackage }) {
         const packageData = {
             service: "consul",
             name: packages,
-            package: valueEng,
+            packageEng: valueEng,
+            packageArb: '',
             offer: [
                 {
                     eng: "High-Speed Internet - Wifi",

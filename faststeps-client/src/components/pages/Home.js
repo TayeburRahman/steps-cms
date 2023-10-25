@@ -62,7 +62,7 @@ function Home() {
                 <div className='banner-container' > 
                     <Container className='banner-text' id={`${languesState === "arb" && "d-grid-r"}`} >
                         <div
-                            className='text-left text-anime dfl-lefts padding-p mx-w6'
+                            className='text-left text-anime dfl-lefts padding-p mx-w6 text-cus-banner-home'
                             id={`${name === 'home' ? "dfl-leftShow" : ""}`}
                             dangerouslySetInnerHTML={{
                                 __html: languesState === "arb" ? r1Content?.arb : r1Content?.eng,
@@ -133,13 +133,36 @@ function Home() {
                             <Link className='more-link mt-5' as={HashLink} to="/contact"> {languesState === "arb" ? "يتعلم أكثر" : "Learn More"} </Link>
                             </div>
                         </div>
-                        <div className='col-sm-12 col-md-7 col-lg-7 ps-5 mb-4 padding-sm-none'>
-                            <div className='d-flex business_right'> <img className='image-business ' src={one} /> <p className='ms-2'> {languesState === "arb" ?"تسهيل العمليات التجارية لتحسين النتائج":"Streamlining Business Processes For Optimized Operations"}</p></div>
-                            <div className='d-flex business_right'> <img className='image-business ' src={tow} /> <p className='ms-2'>{languesState === "arb" ? "إيجاد فرص متفردة صممت خصيصًا لتحقيق النمو":"Unlocking Unparalleled Opportunities Tailored For Growth"}</p></div>
-                            <div className='d-flex business_right'> <img className='image-business ' src={three} /> <p className='ms-2'>{languesState === "arb" ? "تحفيز الإمكانات وتحويلها إلى مسارات نمو ملموسة":"Catalyzing Potential Into Tangible Growth Trajectories"}</p></div>
-                            <div className='d-flex business_right'> <img className='image-business ' src={fore} /> <p className='ms-2'>{languesState === "arb" ? "دعم المهارات و تقوية الكفاءات الأساسية":"Cultivating Skills While Fortifying Core Competencies"}</p></div>
-                            <div className='d-flex business_right'> <img className='image-business ' src={five} /> <p className='ms-2'>{languesState === "arb" ?"تعزيز ثقافة الابتكار ونشاط ريادة الأعمال":"Fostering A Culture Of Innovation And Entrepreneurial Vigor"}</p></div>
-                            <div className='d-flex business_right'> <img className='image-business ' src={six} /> <p className='ms-2'>{languesState === "arb" ?"تقديم خبرة متمرسة وخدمات استشارية ذات رؤية واضحة":"Offering Seasoned Expertise And Insightful Consultancy Services"}</p></div>
+                        <div className='col-sm-12 col-md-7 col-lg-7 ps-5 mb-4 padding-sm-none' id={languesState ==="arb"&&"d-flex-e"} >
+                            <div className='d-flex business_right' id={languesState ==="arb"&&"d-flex-e"} > {languesState !=="arb"&&  <img className='image-business ' src={one} />} <p className='ms-2 p-text '> {languesState === "arb" ?"تسهيل العمليات التجارية لتحسين النتائج":"Streamlining Business Processes For Optimized Operations"}</p>
+                            {languesState ==="arb"&&  <img className='image-business ms-2' src={one} />} 
+                            </div>
+
+                            <div className='d-flex business_right' id={languesState ==="arb"&&"d-flex-e"} >
+                            {languesState !=="arb"&&   <img className='image-business ' src={tow} /> }<p className='ms-2 p-text '>{languesState === "arb" ? "إيجاد فرص متفردة صممت خصيصًا لتحقيق النمو":"Unlocking Unparalleled Opportunities Tailored For Growth"}</p>
+                            {languesState ==="arb"&&   <img className='image-business ms-2' src={tow} /> }
+                            </div>
+
+                            <div className='d-flex business_right' id={languesState ==="arb"&&"d-flex-e"} >
+                            {languesState !=="arb"&&   <img className='image-business ' src={three} />} <p className='ms-2 p-text '>{languesState === "arb" ? "تحفيز الإمكانات وتحويلها إلى مسارات نمو ملموسة":"Catalyzing Potential Into Tangible Growth Trajectories"}</p>
+                            {languesState ==="arb"&&   <img className='image-business ms-2' src={three} />} 
+                            </div>
+                            <div className='d-flex business_right' id={languesState ==="arb"&&"d-flex-e"} > 
+                            {languesState !=="arb"&&  <img className='image-business ' src={fore} /> }
+                            <p className='ms-2 p-text '>{languesState === "arb" ? "دعم المهارات و تقوية الكفاءات الأساسية":"Cultivating Skills While Fortifying Core Competencies"}</p>
+                            {languesState ==="arb"&&  <img className='image-business ms-2' src={fore} /> }
+                            </div>
+
+                            <div className='d-flex business_right' id={languesState ==="arb"&&"d-flex-e"} >
+                            {languesState !=="arb"&&   <img className='image-business ' src={five} />} <p className='ms-2 p-text '>{languesState === "arb" ?"تعزيز ثقافة الابتكار ونشاط ريادة الأعمال":"Fostering A Culture Of Innovation And Entrepreneurial Vigor"}</p>
+                            {languesState ==="arb"&&   <img className='image-business ms-2' src={five} />}  
+                            </div>
+
+                            <div className='d-flex business_right' id={languesState ==="arb"&&"d-flex-e"} > 
+                            {languesState !=="arb"&&  <img className='image-business ' src={six} />}<p className='ms-2 p-text'>{languesState === "arb" ?"تقديم خبرة متمرسة وخدمات استشارية ذات رؤية واضحة":"Offering Seasoned Expertise And Insightful Consultancy Services"}</p>
+                            {languesState ==="arb"&&  <img className='image-business ms-2' src={six} />}
+                            
+                            </div>
                         </div>
                     </div>
 

@@ -40,11 +40,11 @@ function PeopleOrganization() {
                         <NavBar />
                         <div className='background-overlay-office'></div>
                         <div className='d-flex banner-about'>
-                            <h2>{languesState==="arb"?"صفحة الخدمات":"Services"}</h2>
+                            <h2>{languesState === "arb" ? "صفحة الخدمات" : "Services"}</h2>
                         </div>
                     </div>
                     <div className='d-flex content-center mtop-50'>
-                        <div className='mx-w1300 d-flex-b row'>
+                        <div className='mx-w1300 content-center row'>
                             <div className='col-md-3 col-xs-6 col-sm-6 col-lg-2 padding0-se margin-3 sm-custom'>
                                 <Link to="/services" className='service-link-product service-product-off'>
 
@@ -112,20 +112,23 @@ function PeopleOrganization() {
                     </Container>
                     <div className='background-home'>
                         <Container className='pt-5 pb-5 d-grid item-center'>
-                            <div className='row w-70'>
-                                <p className='text-left text-white pb-4' id={`${languesState === "arb"&& "text-right"}`}>{languesState==="arb"?"تعزيز ديناميكيات الفريق من خلال":"Experience the premium touch of 1st Steps with:"}</p>
+                            <div className='row w-80'>
+                                <p className='text-left text-white pb-4' id={`${languesState === "arb" && "text-right"}`}>{languesState === "arb" ? "تعزيز ديناميكيات الفريق من خلال" : "Experience the premium touch of 1st Steps with:"}</p>
                                 {
                                     r2Content && r2Content?.map((data, idx) => (
                                         <div className='col-sm-12 col-md-6 col-lg-6 mt-3 mb-2'>
-                                            <div  className={`${languesState === "arb" ?'d-flex-b':'d-flex-s'}`}>
-                                                <div className=''>
+                                            <div className={`${languesState === "arb" ? 'd-flex-e' : 'd-flex-s'}`}>
+                                                {languesState !== "arb" && <div className=''>
                                                     <img src={line} className='' />
-                                                </div>
+                                                </div>}
                                                 <div className='object-div'
                                                     dangerouslySetInnerHTML={{
                                                         __html: languesState === "arb" ? data?.arb : data?.eng,
                                                     }}>
                                                 </div>
+                                                {languesState === "arb" && <div className='ms-3'>
+                                                    <img src={line} className='' />
+                                                </div>}
                                             </div>
                                         </div>
                                     ))
@@ -163,8 +166,7 @@ function PeopleOrganization() {
                                     type="text"
                                     id="displayName"
                                     placeholder="Email"
-                                    required
-
+                                    required 
                                 />
                                 <button className='contact-link mt-3' >Subscribe</button>
                             </div>

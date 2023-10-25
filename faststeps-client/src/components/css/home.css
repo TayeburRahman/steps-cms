@@ -15,6 +15,9 @@
 .banner-top {
   position: relative;
 }
+#d-flex-e {
+  justify-content: flex-end !important;
+}
 .scroll {
   position: absolute;
   bottom: 60px;
@@ -241,7 +244,19 @@
   width: 90px !important;
   transition: 0.5s;
 }
+.text-black-html p {
+  font-size: 18px;
+}
 
+.text-white-html p {
+  font-size: 18px;
+}
+.text-cus-banner-home p {
+  font-size: 18px;
+}
+.p-text {
+  font-size: 16px !important;
+}
 .background-craping:hover .Path4843o {
   width: 110px !important;
 }
@@ -432,8 +447,8 @@
   .Group36920w {
     position: absolute;
     left: 0;
-    width: 399px;
-    margin-top: 188px;
+    width: 350px;
+    margin-top: 145px;
   }
 
   .padding-top-0 {
@@ -443,9 +458,6 @@
     padding: 0px !important;
   }
 
-  .Group36920w {
-    margin-top: 120px;
-  }
   .jr-w5 {
     width: 100%;
   }
@@ -491,5 +503,8 @@
     color: #093336;
     line-height: 32px !important;
     font-size: 28px;
+  }
+  .text-cus-banner-home h2 {
+    font-size: 47px;
   }
 }

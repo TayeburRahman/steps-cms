@@ -81,7 +81,8 @@ export default function CreatePeoplePackage({ openPackage, setOpenPackage }) {
         const packageData = {
             service: "people",
             name: packages,
-            package: valueEng,
+            packageEng: valueEng,
+            packageArb: '',
             offer: [
                 {
                     eng: "High-Speed Internet - Wifi",

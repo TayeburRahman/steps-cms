@@ -54,25 +54,33 @@ export default function PrivateOffice({setValueOpenP,openValueP}) {
             anchor={anchor}
             open={state[anchor]} >
               <Header/>
-              <Container className='mt-3 mb-5'>
+              <Container className='mt-3 mb-5' id={`${languesState ==="arb"?"almarai":"comfortaa"}`}>
               <div className='text-center text-white d-grid-c mb-4'>
                   <p className='w-70'>{languesState === "arb" ?"مكاتب بمساحات مختلفة تبدأ مجهزة بالكامل تتم ادارتها من قبلنا و مزودة بفريق دعم متخصص في مجال لتكنولوجيا المعلومات ومجال السكرتارية تمكنك من مباشرة العمل على الفور":"A group of offices with different areas, ready for private use by one or more people depending on their needs. These offices are equipped with all the necessities to easily start working once occupied. These offices are managed by 1st Steps and supported by a dedicated IT and secretarial team to help you accomplish your tasks."}</p> 
                 </div>
                 <div className='row'>
                     <div className='col-sm-12 col-md-4 col-lg-4 text-center pb-2'>
-                        <button className={valueClick=== 1? "button-bg-pck":"button-rg-pck"} onClick={e=> setStateValue(1)}> 12 sqm office with a view</button>
+                        <button className={valueClick=== 1? "button-bg-pck":"button-rg-pck"} onClick={e=> setStateValue(1)}> 
+                       {languesState === "arb" ? "مكتب بمساحة 12 متر مربع بإطلالة" :
+                        "12 sqm office with a view"} </button>
                     </div>
                     <div className='col-sm-12 col-md-4 col-lg-4 text-center pb-2'>
-                        <button className={valueClick=== 2? "button-bg-pck":"button-rg-pck"} onClick={e=> setStateValue(2)}> 12 sqm office No View</button>
+                        <button className={valueClick=== 2? "button-bg-pck":"button-rg-pck"} onClick={e=> setStateValue(2)}>{languesState === "arb" ? 
+                          "مكتب بمساحة 12 متر مربع بلا إطلالة"
+                        :"12 sqm office No View"}
+                        </button>
                     </div>
                     <div className='col-sm-12 col-md-4 col-lg-4 text-center pb-2'>
-                        <button className={valueClick=== 3? "button-bg-pck":"button-rg-pck"} onClick={e=> setStateValue(3)}> 18 sqm office with a view</button>
+                        <button className={valueClick=== 3? "button-bg-pck":"button-rg-pck"} onClick={e=> setStateValue(3)}> 
+                        {languesState === "arb" ? "مكتب بمساحة 18 متر مربع بإطلالة" :
+                        "18 sqm office with a view"}
+                         </button>
                     </div>
                 </div> 
               </Container>
                {
                 valueClick === 1 &&(
-                    <Container className=''>
+                    <Container id={`${languesState ==="arb"?"almarai":"comfortaa"}`}>
                
                {
                   view12_office && view12_office?.map((data, idx)=>(
@@ -82,7 +90,7 @@ export default function PrivateOffice({setValueOpenP,openValueP}) {
                       <div
                             className='box-model-pkg p-4 text-center pt-5 lg-text-color'
                             dangerouslySetInnerHTML={{
-                                __html: data?.package
+                                __html: languesState === "arb"? data?.packageArb : data?.packageEng
                             }}>
                         </div> 
                       </div>
@@ -110,7 +118,7 @@ export default function PrivateOffice({setValueOpenP,openValueP}) {
               
               {
                 valueClick === 2 &&(
-                    <Container className=''> 
+                    <Container id={`${languesState ==="arb"?"almarai":"comfortaa"}`}> 
                      {
                   noView12_office && noView12_office?.map((data, idx)=>(
                     <div className='mb-4'> 
@@ -119,7 +127,7 @@ export default function PrivateOffice({setValueOpenP,openValueP}) {
                       <div
                             className='box-model-pkg p-4 text-center pt-5 lg-text-color'
                             dangerouslySetInnerHTML={{
-                                __html: data?.package
+                                __html: languesState === "arb"? data?.packageArb : data?.packageEng
                             }}>
                         </div> 
                       </div>
@@ -147,7 +155,7 @@ export default function PrivateOffice({setValueOpenP,openValueP}) {
 
 {
                 valueClick === 3 &&(
-                    <Container className=''> 
+                    <Container id={`${languesState ==="arb"?"almarai":"comfortaa"}`}> 
                     {
                   view18_office && view18_office?.map((data, idx)=>(
                     <div className='mb-4'> 
@@ -156,7 +164,7 @@ export default function PrivateOffice({setValueOpenP,openValueP}) {
                       <div
                             className='box-model-pkg p-4 text-center pt-5 lg-text-color'
                             dangerouslySetInnerHTML={{
-                                __html: data?.package
+                                __html: languesState === "arb"? data?.packageArb : data?.packageEng
                             }}>
                         </div> 
                       </div>

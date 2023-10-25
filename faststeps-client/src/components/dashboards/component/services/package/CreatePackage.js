@@ -81,7 +81,8 @@ export default function CreatePackage({ openPackage, setOpenPackage }) {
         const packageData = {
             service: "office",
             name: packages,
-            package: valueEng,
+            packageEng: valueEng,
+            packageArb: '',
             offer: [
                 {
                     eng: "High-Speed Internet - Wifi",

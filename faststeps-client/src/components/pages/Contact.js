@@ -79,7 +79,7 @@ function Contact() {
                         </div>
                         <Container className='d-grid-c'>
                             <div
-                                className='text-center text-black-html mx-w7 padding-sm-none mt-3 mb-2 pt-5 pb-5'
+                                className='text-center text-black-html mx-w7 mt-3 mb-2 pt-5 pb-5'
                                 dangerouslySetInnerHTML={{
                                     __html: languesState === "arb" ? r1Content?.arb : r1Content?.eng,
                                 }}>
@@ -158,7 +158,10 @@ function Contact() {
                                 <div className='col-sm-12 col-md-5 col-lg-5 d-grid-c align_content content-end mt-5'>
                                     <div className='mx-w395'>
                                         <div className='contact-add text-left mt-3 margin-top-fix mb-3 d-flex-contact-add'>
-                                            <PlaceIcon className='contact-left-m svg-contact' style={{ color: "#0b3d41", fontSize: "41px" }} />  2413 imam Saud Bin Abdulaziz Bin Mohamed Rd 7997 Al Muraslat Dist. 12463 Riyadh, KSA
+                                            <PlaceIcon className='contact-left-m svg-contact' style={{ color: "#0b3d41", fontSize: "41px" }} />   
+                                            {languesState !=="arb"&& <span>2413 imam Saud Bin Abdulaziz Bin Mohamed Rd 7997 Al Muraslat Dist. 12463 Riyadh, KSA</span>}
+
+                                            {languesState ==="arb"&& "٢٤١٣ طريق الامام سعود بن عبدالعزيز بن محمد ٧٩٩٧ حي المرسلات، ١٢٤٦٣ الرياض، المملكة العربية السعودية"}
                                         </div>
                                         <div className='contact-add text-left mt-3'>
                                             <DraftsIcon className='svg-contact' style={{ color: "#0b3d41", fontSize: "41px" }} />   info@1ststeps.com.sa
@@ -176,10 +179,10 @@ function Contact() {
                                     </div>
 
                                     <div className='d-flex text-left w-100  mb-5 icon-contact-img'>
-                                        <a href="http:" > <img src={tow} /> </a>
-                                        <a href="http:" > <img src={link} /> </a>
-                                        <a href="http:" > <img src={ins} /> </a>
-                                        <div className='icon-youtub-div'> <YouTubeIcon className='icon-youtub' /></div>
+                                        <a href='https://twitter.com/1stSteps_sa' target="_blank" > <img src={tow} /> </a>
+                                        <a href='https://www.linkedin.com/company/1ststeps/' target="_blank" > <img src={link} /> </a>
+                                        <a href='https://www.instagram.com/1ststeps_sa/' target="_blank" > <img src={ins} /> </a>
+                                        <a href='https://www.youtube.com/@1stStepsBusinessConsulta-ht3gh/featured' target="_blank" className='icon-youtub-div'> <YouTubeIcon className='icon-youtub' /></a>
                                     </div>
                                 </div>
                                 <div className='col-sm-12 col-md-7 col-lg-7 padding-0'>

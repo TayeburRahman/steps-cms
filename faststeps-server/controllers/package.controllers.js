@@ -5,8 +5,7 @@ const createPackages = async (req, res) => {
     try {
         const {data} = req.body;  
        
-        const package = await packageModels.create(data);
-    
+        const package = await packageModels.create(data); 
 
         return res.status(200).json({
             package,
@@ -150,11 +149,43 @@ const deleteDataPackageOffer = async (req, res) => {
     }
 };
  
+const updateDataPackage = async (req, res) => {
+    try { 
 
+        const updatedData = req.body.updated;
+
+        const documentId = req.params.id; // Identifier of the document
+
+        console.log("precedingEng", documentId, updatedData)
+
+        // Find the document and update the data_ray array using $ positional operator
+        const updatedDocument = await packageModels.findOneAndUpdate(
+            {
+                _id: documentId, 
+            },
+            {
+                $set: {
+                    'packageEng': updatedData.eng,
+                    'packageArb': updatedData.arb
+                }
+            },
+            { new: true }
+        );
+
+        if (!updatedDocument) {
+            return res.status(404).send('Document with preceding data not found');
+        }
+
+        res.json({ message: "Update successful", updatedDocument: updatedDocument });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+};
  
 
  
 
 module.exports = {
-    createPackages, getAllPackageData, findPackages, updateDataPackageOffer,deleteDataPackageOffer, addDataPackageOffer
+    createPackages, getAllPackageData, findPackages, updateDataPackageOffer,deleteDataPackageOffer, addDataPackageOffer, updateDataPackage
 }

@@ -9,7 +9,10 @@ const packageModel = new mongoose.Schema(
             service: {
                 type: String,  
             },
-            package: {
+            packageEng: {
+                type: String, 
+            },
+            packageArb: {
                 type: String, 
             },
             offer:{

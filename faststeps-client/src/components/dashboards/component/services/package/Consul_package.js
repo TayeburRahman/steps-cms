@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux'
 import { useGetConsulPackageQuery } from '../../../../../features/auth/authApi'
 import AddPackageOffer from './AddPackageOffer'
 import CreateConsulPackage from './CreateConsulPackage'
+import EditPackages from './EditPackages'
 import UpdateOffer from './UpdateOffer'
 
 function Consul_package() {
@@ -20,6 +21,7 @@ function Consul_package() {
     const [editId, setEditId] = useState()
     const [addId, setAddId] = useState()
     const [packagesAdd, setSelectPackage] = useState()
+    const [packageData, setPackageData] = useState()
 
 
 
@@ -45,6 +47,15 @@ function Consul_package() {
         setOpenAdd(true)
     }
 
+    const handleEditPackage = (id, data) => {
+        setEditId(id)
+        setPackageData(data)
+    }
+
+
+    console.log("langues", langues, packageData)
+
+
 
     const deleteOnAddOffer = (id, data) => {
 
@@ -58,7 +69,7 @@ function Consul_package() {
                     alert('Delete successfully')
                 }
             });
-    } 
+    }
 
 
     return (
@@ -79,18 +90,50 @@ function Consul_package() {
                     <h5 className='pt-2 p-bg-100'>Explore Our Advisory Packages</h5>
                     {
                         explore_consul && explore_consul?.map((data, idx) => (
-                            <div>
-
+                            <div> 
                                 <div className=' text-center mb-2 border-settings'>
                                     <button className='button-handle-add' onClick={e => handleOnAddOffer(data?._id, data.package)}> Create New </button>
                                     {data?._id === addId && <AddPackageOffer packages={packagesAdd} openAdd={openAdd} setOpenAdd={setOpenAdd} id={addId} />}
                                 </div>
-                                <div
-                                    className='text-center package-text pb-1'
-                                    dangerouslySetInnerHTML={{
-                                        __html: data?.package
-                                    }}>
+                                <div className='row object-settings'>
+                                    <div className='col-sm-12 col-md-6 col-lg-6 pb-1 pt-1 d-flex-c'>
+                                        {
+                                            data !== packageData && <button className='button-handle' onClick={(e) => handleEditPackage(data?._id, data)}> Edit </button>
+                                        }
+                                        {
+                                            data === packageData && <button className='button-handle' onClick={(e) => handleEditPackage(null)} > Cancel </button>
+                                        }
+                                    </div>
+                                    <div className='col-sm-12 col-md-6 col-lg-6 d-flex-c'>
+                                        {/* {data === packageData ?
+                                            <button className='button-handle bg-red' onClick={(e) => deleteOnAddOffer(data?._id)} > delete </button>
+                                            : */}
+                                            <div>
+                                                <label>Langues</label>
+                                                <select id="langues" name="langues" onClick={e => (handleOnSelectObjet(e.target.value, data?._id))}>
+                                                    <option value="eng" >English</option>
+                                                    <option value="arb">Arbi</option>
+                                                </select>
+                                            </div>
+                                        {/* } */}
+                                    </div>
                                 </div>
+
+                                {
+                                    data !== packageData &&
+                                    <div
+                                        className='text-center package-text pb-4'
+                                        dangerouslySetInnerHTML={{
+                                            __html: rIdx === data?._id  && langues === "arb" ? data?.packageArb : data?.packageEng
+                                        }}>
+                                    </div>
+                                }
+
+                                <>
+                                    {
+                                        data === packageData && <EditPackages langues={langues} editData={packageData} id={editId} setEditId={setEditId} setPackageData={setPackageData} />
+                                    }
+                                </>
 
                                 <div className='row'>
                                     {
@@ -134,13 +177,13 @@ function Consul_package() {
                                                 </div>
                                             </div>
                                         ))}
-                                </div> 
-                            </div> 
+                                </div>
+                            </div>
                         ))
-                    } 
+                    }
                 </Container>
 
-            </Box> 
+            </Box>
 
 
         </div>
